@@ -39,13 +39,13 @@ export default function RadarChart({ results }) {
       {
         label: 'Нейротрансмиттерный профиль',
         data: values,
-        backgroundColor: 'rgba(99, 102, 241, 0.2)',
-        borderColor: 'rgba(99, 102, 241, 1)',
+        backgroundColor: 'rgba(255, 0, 255, 0.15)',
+        borderColor: '#ff00ff',
         borderWidth: 2,
-        pointBackgroundColor: 'rgba(99, 102, 241, 1)',
+        pointBackgroundColor: '#ff00aa',
         pointBorderColor: '#fff',
         pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgba(99, 102, 241, 1)',
+        pointHoverBorderColor: '#ff00ff',
         pointRadius: 6,
         pointHoverRadius: 8,
       },
@@ -70,17 +70,18 @@ export default function RadarChart({ results }) {
     scales: {
       r: {
         angleLines: {
-          color: 'rgba(0, 0, 0, 0.1)',
+          color: 'rgba(217, 70, 239, 0.2)',
         },
         grid: {
-          color: 'rgba(0, 0, 0, 0.1)',
+          color: 'rgba(217, 70, 239, 0.2)',
         },
         pointLabels: {
           font: {
             size: 14,
             weight: '600',
+            family: "'Century Gothic', sans-serif",
           },
-          color: '#374151',
+          color: '#d946ef',
         },
         suggestedMin: 0,
         suggestedMax: 100,

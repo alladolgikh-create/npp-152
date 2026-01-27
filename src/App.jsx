@@ -7,7 +7,6 @@ import {
   calculateNeurotransmitterScales,
   getTotalQuestions,
   getTotalBlocks,
-  getQuestionsByBlock,
 } from './utils/scoring';
 
 const STATES = {
@@ -21,6 +20,7 @@ function App() {
   const [currentBlock, setCurrentBlock] = useState(1);
   const [answers, setAnswers] = useState({});
   const [results, setResults] = useState(null);
+  const [userName, setUserName] = useState('');
 
   const totalQuestions = getTotalQuestions();
   const totalBlocks = getTotalBlocks();
@@ -29,7 +29,8 @@ function App() {
     return Object.keys(answers).length;
   }, [answers]);
 
-  const handleStart = () => {
+  const handleStart = (name) => {
+    setUserName(name);
     setAppState(STATES.QUESTIONNAIRE);
     setCurrentBlock(1);
     setAnswers({});
@@ -66,11 +67,12 @@ function App() {
     setCurrentBlock(1);
     setAnswers({});
     setResults(null);
+    setUserName('');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-fuchsia-50 py-8 px-4">
       <div className="max-w-4xl mx-auto">
         {appState === STATES.WELCOME && <WelcomeScreen onStart={handleStart} />}
 
@@ -93,7 +95,7 @@ function App() {
         )}
 
         {appState === STATES.RESULTS && results && (
-          <Results results={results} onRestart={handleRestart} />
+          <Results results={results} userName={userName} onRestart={handleRestart} />
         )}
       </div>
     </div>
