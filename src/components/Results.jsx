@@ -1,28 +1,28 @@
 import RadarChart from './RadarChart';
 
 const scaleColors = {
-  serotonin: { bg: 'bg-yellow-100', border: 'border-yellow-400', text: 'text-yellow-700' },
-  dopamine: { bg: 'bg-pink-100', border: 'border-pink-400', text: 'text-pink-700' },
-  noradrenaline: { bg: 'bg-blue-100', border: 'border-blue-400', text: 'text-blue-700' },
-  gaba: { bg: 'bg-green-100', border: 'border-green-400', text: 'text-green-700' },
+  serotonin: { bg: '#fff0fa', border: '#ff00ff', text: '#d946ef' },
+  dopamine: { bg: '#fdf2f8', border: '#ff00aa', text: '#ff00aa' },
+  noradrenaline: { bg: '#f0fdfa', border: '#00d4a8', text: '#00a080' },
+  gaba: { bg: '#faf5ff', border: '#d946ef', text: '#a855f7' },
 };
 
 const interpretationColors = {
-  'Низкий': 'bg-blue-500',
-  'Средний': 'bg-green-500',
-  'Высокий': 'bg-orange-500',
+  'Низкий': '#00d4a8',
+  'Средний': '#d946ef',
+  'Высокий': '#ff00aa',
 };
 
-export default function Results({ results, onRestart }) {
+export default function Results({ results, userName, onRestart }) {
   const { scales } = results;
 
   return (
     <div className="w-full max-w-4xl mx-auto">
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">
-          Ваш нейротрансмиттерный профиль
+        <h1 className="text-3xl font-bold mb-2" style={{ color: '#ff00ff' }}>
+          {userName}, ваш нейротрансмиттерный профиль
         </h1>
-        <p className="text-gray-600">
+        <p style={{ color: '#d946ef' }}>
           Результаты опросника NPP-152
         </p>
       </div>
@@ -40,17 +40,18 @@ export default function Results({ results, onRestart }) {
           return (
             <div
               key={key}
-              className={`${colors.bg} ${colors.border} border-2 rounded-xl p-6`}
+              className="rounded-xl p-6 border-2"
+              style={{ backgroundColor: colors.bg, borderColor: colors.border }}
             >
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h3 className={`text-xl font-bold ${colors.text}`}>
+                  <h3 className="text-xl font-bold" style={{ color: colors.text }}>
                     {scale.name}
                   </h3>
                   <p className="text-sm text-gray-600">{scale.nameEn}</p>
                 </div>
                 <div className="text-right">
-                  <span className={`text-3xl font-bold ${colors.text}`}>
+                  <span className="text-3xl font-bold" style={{ color: colors.text }}>
                     {percentage}%
                   </span>
                 </div>
@@ -59,15 +60,16 @@ export default function Results({ results, onRestart }) {
               <div className="mb-4">
                 <div className="w-full bg-white/50 rounded-full h-3 overflow-hidden">
                   <div
-                    className={`h-full ${interpretationColor} rounded-full transition-all duration-500`}
-                    style={{ width: `${percentage}%` }}
+                    className="h-full rounded-full transition-all duration-500"
+                    style={{ width: `${percentage}%`, backgroundColor: interpretationColor }}
                   />
                 </div>
               </div>
 
               <div className="mb-3">
                 <span
-                  className={`inline-block px-3 py-1 rounded-full text-sm font-medium text-white ${interpretationColor}`}
+                  className="inline-block px-3 py-1 rounded-full text-sm font-medium text-white"
+                  style={{ backgroundColor: interpretationColor }}
                 >
                   {scale.interpretation.label}
                 </span>
@@ -84,9 +86,9 @@ export default function Results({ results, onRestart }) {
         })}
       </div>
 
-      <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-6 text-white mb-8">
+      <div className="rounded-xl p-6 text-white mb-8" style={{ background: 'linear-gradient(to right, #ff00ff, #d946ef)' }}>
         <h3 className="text-xl font-bold mb-4">Интерпретация результатов</h3>
-        <div className="space-y-3 text-blue-100">
+        <div className="space-y-3 text-fuchsia-100">
           <p>
             <strong className="text-white">Серотонин</strong> отражает вашу эмоциональную стабильность.
             Низкие значения указывают на устойчивость к стрессу, высокие - на склонность к тревожности.
@@ -109,7 +111,8 @@ export default function Results({ results, onRestart }) {
       <div className="text-center">
         <button
           onClick={onRestart}
-          className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-medium hover:from-blue-600 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl"
+          className="px-8 py-4 text-white rounded-xl font-medium transition-all shadow-lg hover:shadow-xl hover:scale-105"
+          style={{ background: 'linear-gradient(to right, #ff00ff, #d946ef)' }}
         >
           Пройти опросник заново
         </button>

@@ -59,9 +59,9 @@ export default function QuestionBlock({
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl p-6 mb-6">
+      <div className="text-white rounded-xl p-6 mb-6" style={{ background: 'linear-gradient(to right, #ff00ff, #d946ef)' }}>
         <h2 className="text-2xl font-bold mb-2">{block.title}</h2>
-        <p className="text-blue-100">{block.instruction}</p>
+        <p className="text-fuchsia-100">{block.instruction}</p>
         {block.responseScale.note && (
           <p className="mt-3 text-sm bg-white/20 rounded-lg p-3">
             {block.responseScale.note}
@@ -69,7 +69,7 @@ export default function QuestionBlock({
         )}
       </div>
 
-      <div className="mb-4 text-sm text-gray-500 text-center">
+      <div className="mb-4 text-sm text-center" style={{ color: '#d946ef' }}>
         Вопрос {currentQuestionIndex + 1} из {questions.length} в этом блоке
       </div>
 
@@ -96,7 +96,8 @@ export default function QuestionBlock({
         {isLastQuestion && allQuestionsAnswered ? (
           <button
             onClick={handleComplete}
-            className="px-6 py-3 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-colors"
+            className="px-6 py-3 text-white rounded-lg font-medium transition-all hover:scale-105"
+            style={{ backgroundColor: '#00d4a8' }}
           >
             {blockId === 4 ? 'Завершить' : 'Следующий блок'}
           </button>
@@ -104,11 +105,18 @@ export default function QuestionBlock({
           <button
             onClick={handleNext}
             disabled={isLastQuestion || answers[currentQuestion.id] === undefined}
-            className={`px-6 py-3 rounded-lg font-medium transition-colors ${
-              isLastQuestion || answers[currentQuestion.id] === undefined
-                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                : 'bg-blue-500 text-white hover:bg-blue-600'
-            }`}
+            className="px-6 py-3 rounded-lg font-medium transition-colors"
+            style={{
+              backgroundColor: isLastQuestion || answers[currentQuestion.id] === undefined
+                ? '#e5e7eb'
+                : '#ff00ff',
+              color: isLastQuestion || answers[currentQuestion.id] === undefined
+                ? '#9ca3af'
+                : 'white',
+              cursor: isLastQuestion || answers[currentQuestion.id] === undefined
+                ? 'not-allowed'
+                : 'pointer'
+            }}
           >
             Далее
           </button>
