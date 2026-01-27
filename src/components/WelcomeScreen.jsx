@@ -98,11 +98,17 @@ export default function WelcomeScreen({ onStart }) {
           </p>
         </div>
 
-        <div className="rounded-lg p-4 mb-8 text-left" style={{ backgroundColor: '#fff0fa' }}>
+        <div className="rounded-lg p-4 mb-4 text-left" style={{ backgroundColor: '#fff0fa' }}>
           <p className="text-sm" style={{ color: '#d946ef' }}>
             <strong>Рекомендации:</strong> Отвечайте на вопросы быстро и честно,
             основываясь на первом впечатлении. Не существует правильных или
             неправильных ответов - важно только ваше личное восприятие.
+          </p>
+        </div>
+
+        <div className="rounded-lg p-4 mb-8 text-left border" style={{ backgroundColor: '#f0fdfa', borderColor: '#00d4a8' }}>
+          <p className="text-sm text-gray-700">
+            <strong style={{ color: '#00a080' }}>Важно:</strong> Результаты опросника не могут быть достоверны на 100%, поскольку абсолютную точность может обеспечить только лабораторный анализ крови на уровень нейромедиаторов. Однако, учитывая, что концентрация нейромедиаторов меняется в течение дня, для задач, для которых был спроектирован данный опросник, его результаты более релевантны, чем разовый анализ крови.
           </p>
         </div>
       </div>
