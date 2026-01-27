@@ -70,7 +70,7 @@ export default function Results({ results, userName, onRestart }) {
       `С уважением,\n${userName}`
     );
 
-    window.open(`mailto:?subject=${subject}&body=${body}`, '_blank');
+    window.open(`mailto:alla.dolgikh@gmail.com?subject=${subject}&body=${body}`, '_blank');
   };
 
   return (
