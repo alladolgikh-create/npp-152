@@ -19,6 +19,7 @@ function App() {
   const [appState, setAppState] = useState(STATES.WELCOME);
   const [currentBlock, setCurrentBlock] = useState(1);
   const [answers, setAnswers] = useState({});
+  const [answerIndices, setAnswerIndices] = useState({});
   const [results, setResults] = useState(null);
   const [userName, setUserName] = useState('');
 
@@ -34,12 +35,17 @@ function App() {
     setAppState(STATES.QUESTIONNAIRE);
     setCurrentBlock(1);
     setAnswers({});
+    setAnswerIndices({});
   };
 
-  const handleAnswer = (questionId, value) => {
+  const handleAnswer = (questionId, value, optionIndex) => {
     setAnswers((prev) => ({
       ...prev,
       [questionId]: value,
+    }));
+    setAnswerIndices((prev) => ({
+      ...prev,
+      [questionId]: optionIndex,
     }));
   };
 
@@ -66,6 +72,7 @@ function App() {
     setAppState(STATES.WELCOME);
     setCurrentBlock(1);
     setAnswers({});
+    setAnswerIndices({});
     setResults(null);
     setUserName('');
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -87,6 +94,7 @@ function App() {
             <QuestionBlock
               blockId={currentBlock}
               answers={answers}
+              answerIndices={answerIndices}
               onAnswer={handleAnswer}
               onBlockComplete={handleBlockComplete}
               onPreviousBlock={handlePreviousBlock}

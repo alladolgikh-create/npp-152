@@ -12,6 +12,7 @@ const blockColors = {
 export default function QuestionBlock({
   blockId,
   answers,
+  answerIndices,
   onAnswer,
   onBlockComplete,
   onPreviousBlock,
@@ -33,8 +34,8 @@ export default function QuestionBlock({
   const answeredInBlock = questions.filter((q) => answers[q.id] !== undefined).length;
   const unansweredCount = questions.length - answeredInBlock;
 
-  const handleAnswer = (questionId, value) => {
-    onAnswer(questionId, value);
+  const handleAnswer = (questionId, value, optionIndex) => {
+    onAnswer(questionId, value, optionIndex);
   };
 
   const handlePrevious = () => {
@@ -83,6 +84,7 @@ export default function QuestionBlock({
         question={currentQuestion}
         options={block.responseScale.options}
         selectedValue={answers[currentQuestion.id]}
+        selectedIndex={answerIndices[currentQuestion.id]}
         onAnswer={handleAnswer}
         accentColor={colors.accent}
       />
