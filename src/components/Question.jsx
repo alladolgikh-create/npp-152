@@ -1,8 +1,10 @@
-export default function Question({ question, options, selectedValue, onAnswer }) {
+export default function Question({ question, options, selectedValue, onAnswer, accentColor = '#ff00ff' }) {
+  const lightBg = accentColor + '15';
+
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 mb-4">
       <p className="text-lg font-medium text-gray-800 mb-6">
-        <span className="font-bold mr-2" style={{ color: '#ff00ff' }}>{question.id}.</span>
+        <span className="font-bold mr-2" style={{ color: accentColor }}>{question.id}.</span>
         {question.text}
       </p>
 
@@ -13,17 +15,17 @@ export default function Question({ question, options, selectedValue, onAnswer })
             onClick={() => onAnswer(question.id, option.value)}
             className="w-full text-left p-4 rounded-lg border-2 transition-all duration-200"
             style={{
-              borderColor: selectedValue === option.value ? '#ff00ff' : '#e5e7eb',
-              backgroundColor: selectedValue === option.value ? '#fff0fa' : 'white',
-              color: selectedValue === option.value ? '#d946ef' : '#374151'
+              borderColor: selectedValue === option.value ? accentColor : '#e5e7eb',
+              backgroundColor: selectedValue === option.value ? lightBg : 'white',
+              color: selectedValue === option.value ? accentColor : '#374151'
             }}
           >
             <div className="flex items-center">
               <div
                 className="w-5 h-5 rounded-full border-2 mr-3 flex items-center justify-center"
                 style={{
-                  borderColor: selectedValue === option.value ? '#ff00ff' : '#d1d5db',
-                  backgroundColor: selectedValue === option.value ? '#ff00ff' : 'transparent'
+                  borderColor: selectedValue === option.value ? accentColor : '#d1d5db',
+                  backgroundColor: selectedValue === option.value ? accentColor : 'transparent'
                 }}
               >
                 {selectedValue === option.value && (
