@@ -1,4 +1,4 @@
-export default function Question({ question, options, selectedValue, onAnswer, accentColor = '#ff00ff' }) {
+export default function Question({ question, options, selectedValue, selectedIndex, onAnswer, accentColor = '#ff00ff' }) {
   const lightBg = accentColor + '15';
 
   return (
@@ -9,33 +9,36 @@ export default function Question({ question, options, selectedValue, onAnswer, a
       </p>
 
       <div className="space-y-3">
-        {options.map((option, index) => (
-          <button
-            key={index}
-            onClick={() => onAnswer(question.id, option.value)}
-            className="w-full text-left p-4 rounded-lg border-2 transition-all duration-200"
-            style={{
-              borderColor: selectedValue === option.value ? accentColor : '#e5e7eb',
-              backgroundColor: selectedValue === option.value ? lightBg : 'white',
-              color: selectedValue === option.value ? accentColor : '#374151'
-            }}
-          >
-            <div className="flex items-center">
-              <div
-                className="w-5 h-5 rounded-full border-2 mr-3 flex items-center justify-center"
-                style={{
-                  borderColor: selectedValue === option.value ? accentColor : '#d1d5db',
-                  backgroundColor: selectedValue === option.value ? accentColor : 'transparent'
-                }}
-              >
-                {selectedValue === option.value && (
-                  <div className="w-2 h-2 rounded-full bg-white" />
-                )}
+        {options.map((option, index) => {
+          const isSelected = selectedIndex !== undefined ? selectedIndex === index : selectedValue === option.value;
+          return (
+            <button
+              key={index}
+              onClick={() => onAnswer(question.id, option.value, index)}
+              className="w-full text-left p-4 rounded-lg border-2 transition-all duration-200"
+              style={{
+                borderColor: isSelected ? accentColor : '#e5e7eb',
+                backgroundColor: isSelected ? lightBg : 'white',
+                color: isSelected ? accentColor : '#374151'
+              }}
+            >
+              <div className="flex items-center">
+                <div
+                  className="w-5 h-5 rounded-full border-2 mr-3 flex items-center justify-center"
+                  style={{
+                    borderColor: isSelected ? accentColor : '#d1d5db',
+                    backgroundColor: isSelected ? accentColor : 'transparent'
+                  }}
+                >
+                  {isSelected && (
+                    <div className="w-2 h-2 rounded-full bg-white" />
+                  )}
+                </div>
+                <span>{option.label}</span>
               </div>
-              <span>{option.label}</span>
-            </div>
-          </button>
-        ))}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
