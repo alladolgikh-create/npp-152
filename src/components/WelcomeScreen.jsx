@@ -18,16 +18,13 @@ export default function WelcomeScreen({ onStart }) {
 
       <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
         <div className="mb-8">
-          <label htmlFor="userName" className="block text-lg font-semibold text-gray-800 mb-3">
-            Ваше имя и фамилия
-          </label>
           <input
             type="text"
             id="userName"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
-            placeholder="Введите ваше имя"
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-fuchsia-500 focus:outline-none transition-colors text-center text-lg"
+            placeholder="Впишите ваши Имя и Фамилию, пожалуйста"
+            className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-fuchsia-500 focus:outline-none transition-colors text-center text-lg"
           />
         </div>
 
@@ -112,11 +109,15 @@ export default function WelcomeScreen({ onStart }) {
 
       <button
         onClick={handleStart}
-        className="w-full max-w-md px-8 py-4 text-white text-xl font-medium rounded-xl transition-all shadow-lg hover:shadow-xl hover:scale-105"
+        className="w-full max-w-md px-8 py-4 text-white text-xl font-medium rounded-xl transition-all shadow-lg hover:shadow-xl hover:scale-105 mb-8"
         style={{ background: 'linear-gradient(to right, #ff00ff, #d946ef)' }}
       >
         Начать опрос
       </button>
+
+      <footer className="text-center text-sm text-gray-500 pb-4">
+        <p>Опросник спроектирован <span style={{ color: '#d946ef' }}>Аллой Долгих</span></p>
+      </footer>
     </div>
   );
 }
