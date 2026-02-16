@@ -22,6 +22,11 @@ export default function QuestionBlock({
   const questions = getQuestionsByBlock(blockId);
   const colors = blockColors[blockId];
 
+  const currentQuestion = questions[currentQuestionIndex];
+  const isFirstQuestion = currentQuestionIndex === 0;
+  const isLastQuestion = currentQuestionIndex === questions.length - 1;
+  const allQuestionsAnswered = questions.every((q) => answers[q.id] !== undefined);
+
   useEffect(() => {
     setCurrentQuestionIndex(0);
   }, [blockId]);
@@ -42,12 +47,6 @@ export default function QuestionBlock({
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isLastQuestion, allQuestionsAnswered, answers, currentQuestion, onBlockComplete]);
-
-  const currentQuestion = questions[currentQuestionIndex];
-  const isFirstQuestion = currentQuestionIndex === 0;
-  const isLastQuestion = currentQuestionIndex === questions.length - 1;
-
-  const allQuestionsAnswered = questions.every((q) => answers[q.id] !== undefined);
   const answeredInBlock = questions.filter((q) => answers[q.id] !== undefined).length;
   const unansweredCount = questions.length - answeredInBlock;
 
