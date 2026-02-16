@@ -9,336 +9,1727 @@
     "estimatedTime": "25-35 минут",
     "blocks": 4
   },
-
   "scales": {
     "serotonin": {
       "name": "Серотонин",
       "nameEn": "Serotonin",
       "description": "Система эмоциональной стабильности и регуляции тревожности",
-      "components": ["neuroticism", "stai"],
+      "components": [
+        "neuroticism",
+        "stai"
+      ],
       "formula": "0.6 * (neuroticism.total - 24) / 96 + 0.4 * (stai.total - 20) / 60",
-      "range": [0, 1],
+      "range": [
+        0,
+        1
+      ],
       "interpretation": {
-        "low": { "max": 0.30, "label": "Низкий", "description": "Эмоциональная устойчивость" },
-        "medium": { "min": 0.30, "max": 0.60, "label": "Средний", "description": "Баланс" },
-        "high": { "min": 0.60, "label": "Высокий", "description": "Склонность к тревожности" }
+        "low": {
+          "max": 0.3,
+          "label": "Низкий",
+          "description": "Эмоциональная устойчивость"
+        },
+        "medium": {
+          "min": 0.3,
+          "max": 0.6,
+          "label": "Средний",
+          "description": "Баланс"
+        },
+        "high": {
+          "min": 0.6,
+          "label": "Высокий",
+          "description": "Склонность к тревожности"
+        }
       }
     },
     "dopamine": {
       "name": "Дофамин",
       "nameEn": "Dopamine",
       "description": "Система мотивации, вознаграждения и поиска новизны",
-      "components": ["novelty_seeking", "bas", "shaps"],
+      "components": [
+        "novelty_seeking",
+        "bas",
+        "shaps"
+      ],
       "formula": "0.35 * (novelty_seeking.total - 34) / 136 + 0.35 * (bas.total - 13) / 39 - 0.30 * (shaps.total / 14)",
-      "range": [-0.30, 0.70],
+      "range": [
+        -0.3,
+        0.7
+      ],
       "interpretation": {
-        "low": { "max": 0.15, "label": "Низкий", "description": "Сниженная мотивация" },
-        "medium": { "min": 0.15, "max": 0.45, "label": "Средний", "description": "Баланс" },
-        "high": { "min": 0.45, "label": "Высокий", "description": "Высокая мотивация и поиск новизны" }
+        "low": {
+          "max": 0.15,
+          "label": "Низкий",
+          "description": "Сниженная мотивация"
+        },
+        "medium": {
+          "min": 0.15,
+          "max": 0.45,
+          "label": "Средний",
+          "description": "Баланс"
+        },
+        "high": {
+          "min": 0.45,
+          "label": "Высокий",
+          "description": "Высокая мотивация и поиск новизны"
+        }
       }
     },
     "noradrenaline": {
       "name": "Норадреналин",
       "nameEn": "Noradrenaline",
       "description": "Система социальной привязанности и эмоциональной отзывчивости",
-      "components": ["reward_dependence"],
+      "components": [
+        "reward_dependence"
+      ],
       "formula": "(reward_dependence.total - 40) / 160",
-      "range": [0, 1],
+      "range": [
+        0,
+        1
+      ],
       "interpretation": {
-        "low": { "max": 0.35, "label": "Низкий", "description": "Эмоциональная автономность" },
-        "medium": { "min": 0.35, "max": 0.65, "label": "Средний", "description": "Баланс" },
-        "high": { "min": 0.65, "label": "Высокий", "description": "Высокая социальная чувствительность" }
+        "low": {
+          "max": 0.35,
+          "label": "Низкий",
+          "description": "Эмоциональная автономность"
+        },
+        "medium": {
+          "min": 0.35,
+          "max": 0.65,
+          "label": "Средний",
+          "description": "Баланс"
+        },
+        "high": {
+          "min": 0.65,
+          "label": "Высокий",
+          "description": "Высокая социальная чувствительность"
+        }
       }
     },
     "gaba": {
       "name": "ГАМК",
       "nameEn": "GABA",
       "description": "Система торможения и контроля импульсов",
-      "components": ["bis"],
+      "components": [
+        "bis"
+      ],
       "formula": "(bis.total - 7) / 21",
-      "range": [0, 1],
+      "range": [
+        0,
+        1
+      ],
       "interpretation": {
-        "low": { "max": 0.30, "label": "Низкий", "description": "Низкий тормозной контроль" },
-        "medium": { "min": 0.30, "max": 0.60, "label": "Средний", "description": "Баланс" },
-        "high": { "min": 0.60, "label": "Высокий", "description": "Высокий тормозной контроль" }
+        "low": {
+          "max": 0.3,
+          "label": "Низкий",
+          "description": "Низкий тормозной контроль"
+        },
+        "medium": {
+          "min": 0.3,
+          "max": 0.6,
+          "label": "Средний",
+          "description": "Баланс"
+        },
+        "high": {
+          "min": 0.6,
+          "label": "Высокий",
+          "description": "Высокий тормозной контроль"
+        }
       }
     }
   },
-
   "blocks": [
     {
       "id": 1,
       "title": "Блок 1",
-      "questionsRange": [1, 98],
+      "questionsRange": [
+        1,
+        98
+      ],
       "instruction": "Оцените, насколько каждое утверждение соответствует вашему обычному поведению и переживаниям. Отвечайте быстро, основываясь на первом впечатлении.",
       "responseScale": {
         "type": "likert5",
         "options": [
-          { "value": 1, "label": "Совершенно не верно" },
-          { "value": 2, "label": "Скорее не верно" },
-          { "value": 3, "label": "Нечто среднее" },
-          { "value": 4, "label": "Скорее верно" },
-          { "value": 5, "label": "Совершенно верно" }
+          {
+            "value": 1,
+            "label": "Совершенно не верно"
+          },
+          {
+            "value": 2,
+            "label": "Скорее не верно"
+          },
+          {
+            "value": 3,
+            "label": "Нечто среднее"
+          },
+          {
+            "value": 4,
+            "label": "Скорее верно"
+          },
+          {
+            "value": 5,
+            "label": "Совершенно верно"
+          }
         ]
       }
     },
     {
       "id": 2,
       "title": "Блок 2",
-      "questionsRange": [99, 118],
+      "questionsRange": [
+        99,
+        118
+      ],
       "instruction": "Прочитайте внимательно каждое из приведенных ниже предложений и выберите ответ в зависимости от того, как вы себя чувствуете обычно. Над вопросами долго не задумывайтесь.",
       "responseScale": {
         "type": "frequency4",
         "options": [
-          { "value": 1, "label": "Почти никогда" },
-          { "value": 2, "label": "Иногда" },
-          { "value": 3, "label": "Часто" },
-          { "value": 4, "label": "Почти всегда" }
+          {
+            "value": 1,
+            "label": "Почти никогда"
+          },
+          {
+            "value": 2,
+            "label": "Иногда"
+          },
+          {
+            "value": 3,
+            "label": "Часто"
+          },
+          {
+            "value": 4,
+            "label": "Почти всегда"
+          }
         ]
       }
     },
     {
       "id": 3,
       "title": "Блок 3",
-      "questionsRange": [119, 138],
+      "questionsRange": [
+        119,
+        138
+      ],
       "instruction": "Каждое утверждение оцените по тому, насколько оно относится лично к вам.",
       "responseScale": {
         "type": "agreement4",
         "options": [
-          { "value": 1, "label": "Абсолютно не верно" },
-          { "value": 2, "label": "Скорее не верно" },
-          { "value": 3, "label": "Скорее верно" },
-          { "value": 4, "label": "Очень верно" }
+          {
+            "value": 1,
+            "label": "Абсолютно не верно"
+          },
+          {
+            "value": 2,
+            "label": "Скорее не верно"
+          },
+          {
+            "value": 3,
+            "label": "Скорее верно"
+          },
+          {
+            "value": 4,
+            "label": "Очень верно"
+          }
         ]
       }
     },
     {
       "id": 4,
       "title": "Блок 4",
-      "questionsRange": [139, 152],
+      "questionsRange": [
+        139,
+        152
+      ],
       "instruction": "Этот раздел предназначен для оценки вашей способности испытывать удовольствие. Важно, чтобы ваши ответы отражали то, что вы чувствуете сейчас, а не то, что вы чувствовали в прошлом.",
       "responseScale": {
         "type": "agreement4_shaps",
         "options": [
-          { "value": 0, "label": "Полностью согласен" },
-          { "value": 0, "label": "Согласен" },
-          { "value": 1, "label": "Не согласен" },
-          { "value": 1, "label": "Совсем не согласен" }
+          {
+            "value": 0,
+            "label": "Полностью согласен"
+          },
+          {
+            "value": 0,
+            "label": "Согласен"
+          },
+          {
+            "value": 1,
+            "label": "Не согласен"
+          },
+          {
+            "value": 1,
+            "label": "Совсем не согласен"
+          }
         ],
         "note": "В этом блоке высокий балл = сниженная способность испытывать удовольствие"
       }
     }
   ],
-
   "subscales": {
     "neuroticism": {
       "name": "Нейротизм",
       "source": "IPIP-NEO-120",
-      "questions": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
-      "reversed": [11, 17, 20, 21, 22, 23, 24],
+      "questions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "reversed": [
+        11,
+        17,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
       "reverseFormula": "6 - x",
-      "range": [24, 120]
+      "range": [
+        24,
+        120
+      ]
     },
     "novelty_seeking": {
       "name": "Поиск новизны",
       "source": "IPIP-TCI",
-      "questions": [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58],
-      "reversed": [32, 33, 34, 39, 40, 41, 42, 43, 44, 47, 48, 55, 56, 57, 58],
+      "questions": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58
+      ],
+      "reversed": [
+        32,
+        33,
+        34,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        47,
+        48,
+        55,
+        56,
+        57,
+        58
+      ],
       "reverseFormula": "6 - x",
-      "range": [34, 170]
+      "range": [
+        34,
+        170
+      ]
     },
     "reward_dependence": {
       "name": "Зависимость от вознаграждения",
       "source": "IPIP-TCI",
-      "questions": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98],
-      "reversed": [66, 67, 68, 74, 75, 76, 77, 78, 84, 85, 86, 87, 88, 94, 95, 96, 97, 98],
+      "questions": [
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98
+      ],
+      "reversed": [
+        66,
+        67,
+        68,
+        74,
+        75,
+        76,
+        77,
+        78,
+        84,
+        85,
+        86,
+        87,
+        88,
+        94,
+        95,
+        96,
+        97,
+        98
+      ],
       "reverseFormula": "6 - x",
-      "range": [40, 200]
+      "range": [
+        40,
+        200
+      ]
     },
     "stai": {
       "name": "Личностная тревожность",
       "source": "STAI-Trait (Spielberger-Khanin)",
-      "questions": [99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118],
-      "reversed": [99, 104, 105, 108, 111, 114, 117],
+      "questions": [
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118
+      ],
+      "reversed": [
+        99,
+        104,
+        105,
+        108,
+        111,
+        114,
+        117
+      ],
       "reverseFormula": "5 - x",
-      "range": [20, 80]
+      "range": [
+        20,
+        80
+      ]
     },
     "bas": {
       "name": "Система активации поведения",
       "source": "BIS/BAS (Carver-White, Knyazev)",
-      "questions": [119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131],
+      "questions": [
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131
+      ],
       "reversed": [],
-      "range": [13, 52]
+      "range": [
+        13,
+        52
+      ]
     },
     "bis": {
       "name": "Система торможения поведения",
       "source": "BIS/BAS (Carver-White, Knyazev)",
-      "questions": [132, 133, 134, 135, 136, 137, 138],
-      "reversed": [132, 137],
+      "questions": [
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138
+      ],
+      "reversed": [
+        132,
+        137
+      ],
       "reverseFormula": "5 - x",
-      "range": [7, 28]
+      "range": [
+        7,
+        28
+      ]
     },
     "shaps": {
       "name": "Ангедония",
       "source": "SHAPS (Snaith-Hamilton)",
-      "questions": [139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152],
+      "questions": [
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152
+      ],
       "reversed": [],
-      "range": [0, 14]
+      "range": [
+        0,
+        14
+      ]
     }
   },
-
   "questions": [
-    { "id": 1, "block": 1, "subscale": "neuroticism", "facet": "N1_anxiety", "text": "Беспокоюсь о многом", "reversed": false },
-    { "id": 2, "block": 1, "subscale": "neuroticism", "facet": "N2_anger", "text": "Меня легко разозлить", "reversed": false },
-    { "id": 3, "block": 1, "subscale": "neuroticism", "facet": "N3_depression", "text": "Часто грущу", "reversed": false },
-    { "id": 4, "block": 1, "subscale": "neuroticism", "facet": "N4_selfconsciousness", "text": "Мне трудно сближаться с людьми", "reversed": false },
-    { "id": 5, "block": 1, "subscale": "neuroticism", "facet": "N5_immoderation", "text": "Склонен(на) к излишествам", "reversed": false },
-    { "id": 6, "block": 1, "subscale": "neuroticism", "facet": "N6_vulnerability", "text": "Легко впадаю в панику", "reversed": false },
-    { "id": 7, "block": 1, "subscale": "neuroticism", "facet": "N1_anxiety", "text": "Ожидаю худшего", "reversed": false },
-    { "id": 8, "block": 1, "subscale": "neuroticism", "facet": "N2_anger", "text": "Легко раздражаюсь", "reversed": false },
-    { "id": 9, "block": 1, "subscale": "neuroticism", "facet": "N3_depression", "text": "Не нравлюсь себе", "reversed": false },
-    { "id": 10, "block": 1, "subscale": "neuroticism", "facet": "N4_selfconsciousness", "text": "Боюсь привлекать к себе внимание", "reversed": false },
-    { "id": 11, "block": 1, "subscale": "neuroticism", "facet": "N5_immoderation", "text": "Редко предаюсь излишествам", "reversed": true },
-    { "id": 12, "block": 1, "subscale": "neuroticism", "facet": "N6_vulnerability", "text": "Бываю подавлен(а) событиями", "reversed": false },
-    { "id": 13, "block": 1, "subscale": "neuroticism", "facet": "N1_anxiety", "text": "Многого боюсь", "reversed": false },
-    { "id": 14, "block": 1, "subscale": "neuroticism", "facet": "N2_anger", "text": "Выхожу из себя", "reversed": false },
-    { "id": 15, "block": 1, "subscale": "neuroticism", "facet": "N3_depression", "text": "Часто бываю в подавленном состоянии", "reversed": false },
-    { "id": 16, "block": 1, "subscale": "neuroticism", "facet": "N4_selfconsciousness", "text": "Чувствую себя комфортно только среди друзей", "reversed": false },
-    { "id": 17, "block": 1, "subscale": "neuroticism", "facet": "N5_immoderation", "text": "Легко преодолеваю соблазны", "reversed": true },
-    { "id": 18, "block": 1, "subscale": "neuroticism", "facet": "N6_vulnerability", "text": "Чувствую, что не справляюсь с делами", "reversed": false },
-    { "id": 19, "block": 1, "subscale": "neuroticism", "facet": "N1_anxiety", "text": "Легко впадаю в стресс", "reversed": false },
-    { "id": 20, "block": 1, "subscale": "neuroticism", "facet": "N2_anger", "text": "Меня нелегко вывести из себя", "reversed": true },
-    { "id": 21, "block": 1, "subscale": "neuroticism", "facet": "N3_depression", "text": "Меня устраивает все в себе", "reversed": true },
-    { "id": 22, "block": 1, "subscale": "neuroticism", "facet": "N4_selfconsciousness", "text": "Сложные ситуации в общении меня не беспокоят", "reversed": true },
-    { "id": 23, "block": 1, "subscale": "neuroticism", "facet": "N5_immoderation", "text": "Способен(на) контролировать свои влечения", "reversed": true },
-    { "id": 24, "block": 1, "subscale": "neuroticism", "facet": "N6_vulnerability", "text": "Сохраняю спокойствие под давлением", "reversed": true },
-    { "id": 25, "block": 1, "subscale": "novelty_seeking", "facet": "NS1_variety", "text": "Предпочитаю разнообразие рутине", "reversed": false },
-    { "id": 26, "block": 1, "subscale": "novelty_seeking", "facet": "NS1_variety", "text": "Люблю придумывать новые способы делать что-либо", "reversed": false },
-    { "id": 27, "block": 1, "subscale": "novelty_seeking", "facet": "NS1_variety", "text": "Открыт(а) переменам", "reversed": false },
-    { "id": 28, "block": 1, "subscale": "novelty_seeking", "facet": "NS1_variety", "text": "Мне нравится узнавать новые идеи", "reversed": false },
-    { "id": 29, "block": 1, "subscale": "novelty_seeking", "facet": "NS1_variety", "text": "Ищу приключений", "reversed": false },
-    { "id": 30, "block": 1, "subscale": "novelty_seeking", "facet": "NS1_variety", "text": "Люблю начинать что-то новое", "reversed": false },
-    { "id": 31, "block": 1, "subscale": "novelty_seeking", "facet": "NS1_variety", "text": "Люблю посещать новые места", "reversed": false },
-    { "id": 32, "block": 1, "subscale": "novelty_seeking", "facet": "NS1_variety", "text": "Мне не нравится сама идея перемен", "reversed": true },
-    { "id": 33, "block": 1, "subscale": "novelty_seeking", "facet": "NS1_variety", "text": "Не люблю перемены", "reversed": true },
-    { "id": 34, "block": 1, "subscale": "novelty_seeking", "facet": "NS1_variety", "text": "Предпочитаю придерживаться того, что мне знакомо", "reversed": true },
-    { "id": 35, "block": 1, "subscale": "novelty_seeking", "facet": "NS2_recklessness", "text": "Бросаюсь делать, не подумав", "reversed": false },
-    { "id": 36, "block": 1, "subscale": "novelty_seeking", "facet": "NS2_recklessness", "text": "Тороплю события", "reversed": false },
-    { "id": 37, "block": 1, "subscale": "novelty_seeking", "facet": "NS2_recklessness", "text": "Люблю действовать по наитию", "reversed": false },
-    { "id": 38, "block": 1, "subscale": "novelty_seeking", "facet": "NS2_recklessness", "text": "Принимаю поспешные решения", "reversed": false },
-    { "id": 39, "block": 1, "subscale": "novelty_seeking", "facet": "NS2_recklessness", "text": "Люблю переспать с решением, прежде чем действовать", "reversed": true },
-    { "id": 40, "block": 1, "subscale": "novelty_seeking", "facet": "NS2_recklessness", "text": "Думаю дважды, прежде чем что-то сделать", "reversed": true },
-    { "id": 41, "block": 1, "subscale": "novelty_seeking", "facet": "NS2_recklessness", "text": "Принимаю меры предосторожности", "reversed": true },
-    { "id": 42, "block": 1, "subscale": "novelty_seeking", "facet": "NS2_recklessness", "text": "Обращаю внимание на детали", "reversed": true },
-    { "id": 43, "block": 1, "subscale": "novelty_seeking", "facet": "NS2_recklessness", "text": "Обдумываю все, прежде чем действовать", "reversed": true },
-    { "id": 44, "block": 1, "subscale": "novelty_seeking", "facet": "NS2_recklessness", "text": "Исследую все возможности", "reversed": true },
-    { "id": 45, "block": 1, "subscale": "novelty_seeking", "facet": "NS3_extravagance", "text": "Трачу больше денег, чем у меня есть", "reversed": false },
-    { "id": 46, "block": 1, "subscale": "novelty_seeking", "facet": "NS3_extravagance", "text": "Злоупотребляю кредитом", "reversed": false },
-    { "id": 47, "block": 1, "subscale": "novelty_seeking", "facet": "NS3_extravagance", "text": "Никогда не трачу больше, чем могу себе позволить", "reversed": true },
-    { "id": 48, "block": 1, "subscale": "novelty_seeking", "facet": "NS3_extravagance", "text": "Никогда не злоупотребляю кредитом", "reversed": true },
-    { "id": 49, "block": 1, "subscale": "novelty_seeking", "facet": "NS4_rebelliousness", "text": "Нарушаю правила", "reversed": false },
-    { "id": 50, "block": 1, "subscale": "novelty_seeking", "facet": "NS4_rebelliousness", "text": "Знаю, как обойти правила", "reversed": false },
-    { "id": 51, "block": 1, "subscale": "novelty_seeking", "facet": "NS4_rebelliousness", "text": "Мне нравятся грубые шутки", "reversed": false },
-    { "id": 52, "block": 1, "subscale": "novelty_seeking", "facet": "NS4_rebelliousness", "text": "Использую нецензурную лексику", "reversed": false },
-    { "id": 53, "block": 1, "subscale": "novelty_seeking", "facet": "NS4_rebelliousness", "text": "Обманываю, чтобы преуспеть", "reversed": false },
-    { "id": 54, "block": 1, "subscale": "novelty_seeking", "facet": "NS4_rebelliousness", "text": "Сопротивляюсь власти", "reversed": false },
-    { "id": 55, "block": 1, "subscale": "novelty_seeking", "facet": "NS4_rebelliousness", "text": "Никогда бы не обманул(а) при уплате налогов", "reversed": true },
-    { "id": 56, "block": 1, "subscale": "novelty_seeking", "facet": "NS4_rebelliousness", "text": "Стараюсь следовать правилам", "reversed": true },
-    { "id": 57, "block": 1, "subscale": "novelty_seeking", "facet": "NS4_rebelliousness", "text": "Придерживаюсь правил", "reversed": true },
-    { "id": 58, "block": 1, "subscale": "novelty_seeking", "facet": "NS4_rebelliousness", "text": "Уважаю власть", "reversed": true },
-    { "id": 59, "block": 1, "subscale": "reward_dependence", "facet": "RD1_sentimentality", "text": "У меня мягкое сердце", "reversed": false },
-    { "id": 60, "block": 1, "subscale": "reward_dependence", "facet": "RD1_sentimentality", "text": "Плачу во время фильмов", "reversed": false },
-    { "id": 61, "block": 1, "subscale": "reward_dependence", "facet": "RD1_sentimentality", "text": "Глубоко переживаю чужие несчастья", "reversed": false },
-    { "id": 62, "block": 1, "subscale": "reward_dependence", "facet": "RD1_sentimentality", "text": "Легко плачу", "reversed": false },
-    { "id": 63, "block": 1, "subscale": "reward_dependence", "facet": "RD1_sentimentality", "text": "Меня легко довести до слез", "reversed": false },
-    { "id": 64, "block": 1, "subscale": "reward_dependence", "facet": "RD1_sentimentality", "text": "Сочувствую чувствам других людей", "reversed": false },
-    { "id": 65, "block": 1, "subscale": "reward_dependence", "facet": "RD1_sentimentality", "text": "Страдаю от чужих бед", "reversed": false },
-    { "id": 66, "block": 1, "subscale": "reward_dependence", "facet": "RD1_sentimentality", "text": "Равнодушен(на) к чувствам других людей", "reversed": true },
-    { "id": 67, "block": 1, "subscale": "reward_dependence", "facet": "RD1_sentimentality", "text": "У меня нет мягкой стороны", "reversed": true },
-    { "id": 68, "block": 1, "subscale": "reward_dependence", "facet": "RD1_sentimentality", "text": "Редко проявляю эмоции", "reversed": true },
-    { "id": 69, "block": 1, "subscale": "reward_dependence", "facet": "RD2_friendliness", "text": "Легко завожу друзей", "reversed": false },
-    { "id": 70, "block": 1, "subscale": "reward_dependence", "facet": "RD2_friendliness", "text": "Быстро схожусь с людьми", "reversed": false },
-    { "id": 71, "block": 1, "subscale": "reward_dependence", "facet": "RD2_friendliness", "text": "Люблю сводить людей вместе", "reversed": false },
-    { "id": 72, "block": 1, "subscale": "reward_dependence", "facet": "RD2_friendliness", "text": "Интересуюсь людьми", "reversed": false },
-    { "id": 73, "block": 1, "subscale": "reward_dependence", "facet": "RD2_friendliness", "text": "Люблю поболтать", "reversed": false },
-    { "id": 74, "block": 1, "subscale": "reward_dependence", "facet": "RD2_friendliness", "text": "Со мной трудно сблизиться", "reversed": true },
-    { "id": 75, "block": 1, "subscale": "reward_dependence", "facet": "RD2_friendliness", "text": "Мне трудно выражать свои чувства", "reversed": true },
-    { "id": 76, "block": 1, "subscale": "reward_dependence", "facet": "RD2_friendliness", "text": "Избегаю контактов с другими", "reversed": true },
-    { "id": 77, "block": 1, "subscale": "reward_dependence", "facet": "RD2_friendliness", "text": "На самом деле не интересуюсь другими людьми", "reversed": true },
-    { "id": 78, "block": 1, "subscale": "reward_dependence", "facet": "RD2_friendliness", "text": "Держу людей на расстоянии", "reversed": true },
-    { "id": 79, "block": 1, "subscale": "reward_dependence", "facet": "RD3_selfdisclosure", "text": "Открыто говорю о своих чувствах", "reversed": false },
-    { "id": 80, "block": 1, "subscale": "reward_dependence", "facet": "RD3_selfdisclosure", "text": "Открыт(а) другим людям", "reversed": false },
-    { "id": 81, "block": 1, "subscale": "reward_dependence", "facet": "RD3_selfdisclosure", "text": "Делюсь сокровенными мыслями", "reversed": false },
-    { "id": 82, "block": 1, "subscale": "reward_dependence", "facet": "RD3_selfdisclosure", "text": "Показываю свои чувства", "reversed": false },
-    { "id": 83, "block": 1, "subscale": "reward_dependence", "facet": "RD3_selfdisclosure", "text": "Рассказываю о своих тревогах", "reversed": false },
-    { "id": 84, "block": 1, "subscale": "reward_dependence", "facet": "RD3_selfdisclosure", "text": "Мало разговариваю", "reversed": true },
-    { "id": 85, "block": 1, "subscale": "reward_dependence", "facet": "RD3_selfdisclosure", "text": "Мало рассказываю о себе", "reversed": true },
-    { "id": 86, "block": 1, "subscale": "reward_dependence", "facet": "RD3_selfdisclosure", "text": "Держу чувства в себе", "reversed": true },
-    { "id": 87, "block": 1, "subscale": "reward_dependence", "facet": "RD3_selfdisclosure", "text": "Мне мало что есть сказать", "reversed": true },
-    { "id": 88, "block": 1, "subscale": "reward_dependence", "facet": "RD3_selfdisclosure", "text": "Говорю мало", "reversed": true },
-    { "id": 89, "block": 1, "subscale": "reward_dependence", "facet": "RD4_dependence", "text": "Стараюсь угодить всем", "reversed": false },
-    { "id": 90, "block": 1, "subscale": "reward_dependence", "facet": "RD4_dependence", "text": "Следую указаниям", "reversed": false },
-    { "id": 91, "block": 1, "subscale": "reward_dependence", "facet": "RD4_dependence", "text": "Делаю то, что другие хотят от меня", "reversed": false },
-    { "id": 92, "block": 1, "subscale": "reward_dependence", "facet": "RD4_dependence", "text": "Не люблю казаться напористым(ой)", "reversed": false },
-    { "id": 93, "block": 1, "subscale": "reward_dependence", "facet": "RD4_dependence", "text": "Выполняю приказы", "reversed": false },
-    { "id": 94, "block": 1, "subscale": "reward_dependence", "facet": "RD4_dependence", "text": "Мне все равно, что думают другие", "reversed": true },
-    { "id": 95, "block": 1, "subscale": "reward_dependence", "facet": "RD4_dependence", "text": "Быстро распознаю возможности", "reversed": true },
-    { "id": 96, "block": 1, "subscale": "reward_dependence", "facet": "RD4_dependence", "text": "Никому не уступаю", "reversed": true },
-    { "id": 97, "block": 1, "subscale": "reward_dependence", "facet": "RD4_dependence", "text": "Хочу отличаться от других", "reversed": true },
-    { "id": 98, "block": 1, "subscale": "reward_dependence", "facet": "RD4_dependence", "text": "Верю только в себя", "reversed": true },
-    { "id": 99, "block": 2, "subscale": "stai", "text": "Я испытываю удовольствие", "reversed": true },
-    { "id": 100, "block": 2, "subscale": "stai", "text": "Я очень быстро устаю", "reversed": false },
-    { "id": 101, "block": 2, "subscale": "stai", "text": "Я легко могу заплакать", "reversed": false },
-    { "id": 102, "block": 2, "subscale": "stai", "text": "Я хотел бы быть таким же счастливым, как и другие", "reversed": false },
-    { "id": 103, "block": 2, "subscale": "stai", "text": "Нередко я проигрываю из-за того, что недостаточно быстро принимаю решения", "reversed": false },
-    { "id": 104, "block": 2, "subscale": "stai", "text": "Обычно я чувствую себя бодрым", "reversed": true },
-    { "id": 105, "block": 2, "subscale": "stai", "text": "Я спокоен, хладнокровен и собран", "reversed": true },
-    { "id": 106, "block": 2, "subscale": "stai", "text": "Ожидаемые трудности обычно очень тревожат меня", "reversed": false },
-    { "id": 107, "block": 2, "subscale": "stai", "text": "Я слишком переживаю из-за пустяков", "reversed": false },
-    { "id": 108, "block": 2, "subscale": "stai", "text": "Я вполне счастлив", "reversed": true },
-    { "id": 109, "block": 2, "subscale": "stai", "text": "Я принимаю все слишком близко к сердцу", "reversed": false },
-    { "id": 110, "block": 2, "subscale": "stai", "text": "Мне не хватает уверенности в себе", "reversed": false },
-    { "id": 111, "block": 2, "subscale": "stai", "text": "Обычно я чувствую себя в безопасности", "reversed": true },
-    { "id": 112, "block": 2, "subscale": "stai", "text": "Я стараюсь избегать критических ситуаций и трудностей", "reversed": false },
-    { "id": 113, "block": 2, "subscale": "stai", "text": "У меня бывает хандра", "reversed": false },
-    { "id": 114, "block": 2, "subscale": "stai", "text": "Я доволен", "reversed": true },
-    { "id": 115, "block": 2, "subscale": "stai", "text": "Всякие пустяки отвлекают и волнуют меня", "reversed": false },
-    { "id": 116, "block": 2, "subscale": "stai", "text": "Я так сильно переживаю свои разочарования, что потом долго не могу о них забыть", "reversed": false },
-    { "id": 117, "block": 2, "subscale": "stai", "text": "Я уравновешенный человек", "reversed": true },
-    { "id": 118, "block": 2, "subscale": "stai", "text": "Меня охватывает сильное беспокойство, когда я думаю о своих делах и заботах", "reversed": false },
-    { "id": 119, "block": 3, "subscale": "bas", "facet": "BAS_drive", "text": "Я стараюсь изо всех сил, чтобы получить то, что хочу", "reversed": false },
-    { "id": 120, "block": 3, "subscale": "bas", "facet": "BAS_drive", "text": "Если я чего-то хочу, я обычно иду напролом, чтобы это получить", "reversed": false },
-    { "id": 121, "block": 3, "subscale": "bas", "facet": "BAS_drive", "text": "Если я вижу возможность получить то, что хочу, я тут же за нее хватаюсь", "reversed": false },
-    { "id": 122, "block": 3, "subscale": "bas", "facet": "BAS_drive", "text": "Когда я чего-то добиваюсь, для меня нет запретных способов", "reversed": false },
-    { "id": 123, "block": 3, "subscale": "bas", "facet": "BAS_fun", "text": "Я всегда готов(а) попробовать что-то новенькое, если думаю, что это будет интересно", "reversed": false },
-    { "id": 124, "block": 3, "subscale": "bas", "facet": "BAS_fun", "text": "Я часто делаю что-либо лишь для развлечения", "reversed": false },
-    { "id": 125, "block": 3, "subscale": "bas", "facet": "BAS_fun", "text": "Я часто действую по первому порыву", "reversed": false },
-    { "id": 126, "block": 3, "subscale": "bas", "facet": "BAS_fun", "text": "Я страстно жажду новых ощущений и того, что вызывает возбуждение", "reversed": false },
-    { "id": 127, "block": 3, "subscale": "bas", "facet": "BAS_reward", "text": "Мне нравится делать то, что у меня хорошо получается", "reversed": false },
-    { "id": 128, "block": 3, "subscale": "bas", "facet": "BAS_reward", "text": "Когда я получаю то, что хотел(а), я чувствую возбуждение и прилив энергии", "reversed": false },
-    { "id": 129, "block": 3, "subscale": "bas", "facet": "BAS_reward", "text": "Я сразу прихожу в возбуждение, когда вижу возможность осуществить свое желание", "reversed": false },
-    { "id": 130, "block": 3, "subscale": "bas", "facet": "BAS_reward", "text": "Если со мной случается что-то хорошее, это сильно на меня действует", "reversed": false },
-    { "id": 131, "block": 3, "subscale": "bas", "facet": "BAS_reward", "text": "Победа в соревновании сильно поднимает мне настроение", "reversed": false },
-    { "id": 132, "block": 3, "subscale": "bis", "text": "Я редко испытываю страх или нервозность, даже если со мной происходит что-то плохое", "reversed": true },
-    { "id": 133, "block": 3, "subscale": "bis", "text": "Критика или наказание сильно ранят меня", "reversed": false },
-    { "id": 134, "block": 3, "subscale": "bis", "text": "Если я думаю, что кто-то на меня злится, я сильно расстраиваюсь и беспокоюсь", "reversed": false },
-    { "id": 135, "block": 3, "subscale": "bis", "text": "Если я думаю, что должно случиться что-то неприятное, я обычно сильно нервничаю", "reversed": false },
-    { "id": 136, "block": 3, "subscale": "bis", "text": "Я беспокоюсь, если думаю, что допустил(а) много ошибок в важном деле", "reversed": false },
-    { "id": 137, "block": 3, "subscale": "bis", "text": "По сравнению с друзьями у меня очень мало страхов", "reversed": true },
-    { "id": 138, "block": 3, "subscale": "bis", "text": "Я беспокоюсь о том, как бы не ошибиться в чем-либо", "reversed": false },
-    { "id": 139, "block": 4, "subscale": "shaps", "text": "Мне доставляет удовольствие просмотр любимой теле- или радиопередачи", "reversed": false },
-    { "id": 140, "block": 4, "subscale": "shaps", "text": "Мне доставляет удовольствие проводить время с семьей или близкими друзьями", "reversed": false },
-    { "id": 141, "block": 4, "subscale": "shaps", "text": "Мне доставляет удовольствие мое хобби или увлечение", "reversed": false },
-    { "id": 142, "block": 4, "subscale": "shaps", "text": "Мне доставляет удовольствие моя любимая еда", "reversed": false },
-    { "id": 143, "block": 4, "subscale": "shaps", "text": "Мне доставляет удовольствие теплая ванна или освежающий душ", "reversed": false },
-    { "id": 144, "block": 4, "subscale": "shaps", "text": "Мне доставляет удовольствие запах цветов, свежевыпеченного хлеба или дуновение морского ветра", "reversed": false },
-    { "id": 145, "block": 4, "subscale": "shaps", "text": "Мне доставляет удовольствие видеть других людей улыбающимися", "reversed": false },
-    { "id": 146, "block": 4, "subscale": "shaps", "text": "Мне доставляет удовольствие выглядеть умным или произвести впечатление своим появлением", "reversed": false },
-    { "id": 147, "block": 4, "subscale": "shaps", "text": "Мне доставляет удовольствие чтение книги, журнала или газеты", "reversed": false },
-    { "id": 148, "block": 4, "subscale": "shaps", "text": "Мне доставляет удовольствие чашка чая, или кофе, или моего любимого напитка", "reversed": false },
-    { "id": 149, "block": 4, "subscale": "shaps", "text": "Мне доставляют удовольствие обычные вещи — яркий солнечный день, звонок друга", "reversed": false },
-    { "id": 150, "block": 4, "subscale": "shaps", "text": "Мне доставляет удовольствие красивый ландшафт или вид", "reversed": false },
-    { "id": 151, "block": 4, "subscale": "shaps", "text": "Мне доставляет удовольствие помогать другим людям", "reversed": false },
-    { "id": 152, "block": 4, "subscale": "shaps", "text": "Мне доставляет удовольствие похвала от других людей", "reversed": false }
+    {
+      "id": 1,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N1_anxiety",
+      "text": "В моей голове всегда крутится список того, о чем надо переживать",
+      "reversed": false
+    },
+    {
+      "id": 2,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N2_anger",
+      "text": "Мне не нужен особый повод, чтобы разозлиться",
+      "reversed": false
+    },
+    {
+      "id": 3,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N3_depression",
+      "text": "Грусть — мое состояние по умолчанию",
+      "reversed": false
+    },
+    {
+      "id": 4,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N4_selfconsciousness",
+      "text": "Чтобы ко мне приблизиться, нужно сначала пройти кастинг",
+      "reversed": false
+    },
+    {
+      "id": 5,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N5_immoderation",
+      "text": "Если есть шоколадка, я съем всю. И вторую тоже",
+      "reversed": false
+    },
+    {
+      "id": 6,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N6_vulnerability",
+      "text": "Паника включается у меня раньше, чем здравый смысл",
+      "reversed": false
+    },
+    {
+      "id": 7,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N1_anxiety",
+      "text": "Если что-то может пойти не так, я уже это себе представил(а) в деталях",
+      "reversed": false
+    },
+    {
+      "id": 8,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N2_anger",
+      "text": "Меня может раздражать даже то, как кто-то жует рядом",
+      "reversed": false
+    },
+    {
+      "id": 9,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N3_depression",
+      "text": "Я свой самый строгий критик",
+      "reversed": false
+    },
+    {
+      "id": 10,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N4_selfconsciousness",
+      "text": "Мой идеальный план — быть незаметным(ой)",
+      "reversed": false
+    },
+    {
+      "id": 11,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N5_immoderation",
+      "text": "Умеренность — мое второе имя",
+      "reversed": true
+    },
+    {
+      "id": 12,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N6_vulnerability",
+      "text": "Иногда жизнь наваливается так, что хочется просто лечь и не вставать",
+      "reversed": false
+    },
+    {
+      "id": 13,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N1_anxiety",
+      "text": "У меня длинный список страхов, и он постоянно пополняется",
+      "reversed": false
+    },
+    {
+      "id": 14,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N2_anger",
+      "text": "Могу взорваться из-за ерунды, а потом сам(а) удивляюсь",
+      "reversed": false
+    },
+    {
+      "id": 15,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N3_depression",
+      "text": "Бывает, просыпаюсь уже уставшим(ей) от дня, который еще не начался",
+      "reversed": false
+    },
+    {
+      "id": 16,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N4_selfconsciousness",
+      "text": "Среди чужих я чувствую себя как на экзамене, к которому не готовился(ась)",
+      "reversed": false
+    },
+    {
+      "id": 17,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N5_immoderation",
+      "text": "Сказать нет чему-то вкусному или приятному? Легко",
+      "reversed": true
+    },
+    {
+      "id": 18,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N6_vulnerability",
+      "text": "Мой список дел растет быстрее, чем я его выполняю",
+      "reversed": false
+    },
+    {
+      "id": 19,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N1_anxiety",
+      "text": "Стресс находит меня даже на выходных",
+      "reversed": false
+    },
+    {
+      "id": 20,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N2_anger",
+      "text": "Надо очень постараться, чтобы вывести меня из равновесия",
+      "reversed": true
+    },
+    {
+      "id": 21,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N3_depression",
+      "text": "Я себе нравлюсь, и мне с этим комфортно",
+      "reversed": true
+    },
+    {
+      "id": 22,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N4_selfconsciousness",
+      "text": "Конфликты и неловкие разговоры меня не напрягают",
+      "reversed": true
+    },
+    {
+      "id": 23,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N5_immoderation",
+      "text": "Сила воли — это про меня",
+      "reversed": true
+    },
+    {
+      "id": 24,
+      "block": 1,
+      "subscale": "neuroticism",
+      "facet": "N6_vulnerability",
+      "text": "Чем сильнее давят, тем спокойнее я становлюсь",
+      "reversed": true
+    },
+    {
+      "id": 25,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS1_variety",
+      "text": "Рутина — мой личный вид пытки",
+      "reversed": false
+    },
+    {
+      "id": 26,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS1_variety",
+      "text": "Зачем делать по инструкции, если можно придумать свой способ",
+      "reversed": false
+    },
+    {
+      "id": 27,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS1_variety",
+      "text": "Перемены — это не страшно, а интересно",
+      "reversed": false
+    },
+    {
+      "id": 28,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS1_variety",
+      "text": "Новая идея для меня как подарок, который не ждал(а)",
+      "reversed": false
+    },
+    {
+      "id": 29,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS1_variety",
+      "text": "Если жизнь не подкидывает приключения, я найду их сам(а)",
+      "reversed": false
+    },
+    {
+      "id": 30,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS1_variety",
+      "text": "Начинать новое — кайф. Заканчивать — уже другая история",
+      "reversed": false
+    },
+    {
+      "id": 31,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS1_variety",
+      "text": "Новый город, новое кафе, новый маршрут — мне нужно все попробовать",
+      "reversed": false
+    },
+    {
+      "id": 32,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS1_variety",
+      "text": "Перемены? Нет, спасибо, мне и так нормально",
+      "reversed": true
+    },
+    {
+      "id": 33,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS1_variety",
+      "text": "Лучшие перемены — это когда ничего не меняется",
+      "reversed": true
+    },
+    {
+      "id": 34,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS1_variety",
+      "text": "Зачем пробовать новое, если старое работает",
+      "reversed": true
+    },
+    {
+      "id": 35,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS2_recklessness",
+      "text": "Сначала делаю, потом думаю. Потом жалею. Потом снова делаю",
+      "reversed": false
+    },
+    {
+      "id": 36,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS2_recklessness",
+      "text": "Ждать — не мой конек, мне надо все и сразу",
+      "reversed": false
+    },
+    {
+      "id": 37,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS2_recklessness",
+      "text": "Планы — это скучно, по наитию интереснее",
+      "reversed": false
+    },
+    {
+      "id": 38,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS2_recklessness",
+      "text": "Мои решения часто обгоняют мои мысли",
+      "reversed": false
+    },
+    {
+      "id": 39,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS2_recklessness",
+      "text": "Прежде чем решить, мне надо хорошенько все обдумать",
+      "reversed": true
+    },
+    {
+      "id": 40,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS2_recklessness",
+      "text": "Семь раз отмерь — это точно про меня",
+      "reversed": true
+    },
+    {
+      "id": 41,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS2_recklessness",
+      "text": "Я из тех, кто читает инструкцию до конца",
+      "reversed": true
+    },
+    {
+      "id": 42,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS2_recklessness",
+      "text": "Детали — мое все, ничего не ускользнет",
+      "reversed": true
+    },
+    {
+      "id": 43,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS2_recklessness",
+      "text": "Я не начну, пока не продумаю каждый шаг",
+      "reversed": true
+    },
+    {
+      "id": 44,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS2_recklessness",
+      "text": "Прежде чем выбрать, я изучу все варианты до последнего",
+      "reversed": true
+    },
+    {
+      "id": 45,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS3_extravagance",
+      "text": "Зарплата еще не пришла, а я уже ее потратил(а)",
+      "reversed": false
+    },
+    {
+      "id": 46,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS3_extravagance",
+      "text": "Кредитка — мой лучший друг и злейший враг одновременно",
+      "reversed": false
+    },
+    {
+      "id": 47,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS3_extravagance",
+      "text": "Я четко знаю свой бюджет и не выхожу за него",
+      "reversed": true
+    },
+    {
+      "id": 48,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS3_extravagance",
+      "text": "Кредитная карта — только для крайних случаев",
+      "reversed": true
+    },
+    {
+      "id": 49,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS4_rebelliousness",
+      "text": "Правила — рекомендации для тех, кому не хватает фантазии",
+      "reversed": false
+    },
+    {
+      "id": 50,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS4_rebelliousness",
+      "text": "Если нельзя, но очень хочется — я найду способ",
+      "reversed": false
+    },
+    {
+      "id": 51,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS4_rebelliousness",
+      "text": "Чем грубее шутка, тем мне смешнее",
+      "reversed": false
+    },
+    {
+      "id": 52,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS4_rebelliousness",
+      "text": "Без крепкого словца мой словарный запас неполон",
+      "reversed": false
+    },
+    {
+      "id": 53,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS4_rebelliousness",
+      "text": "Если надо немного слукавить ради результата — ну, бывает",
+      "reversed": false
+    },
+    {
+      "id": 54,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS4_rebelliousness",
+      "text": "Когда мне говорят надо — мне хочется сделать наоборот",
+      "reversed": false
+    },
+    {
+      "id": 55,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS4_rebelliousness",
+      "text": "Налоги — дело святое, тут без хитростей",
+      "reversed": true
+    },
+    {
+      "id": 56,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS4_rebelliousness",
+      "text": "Правила существуют не просто так, и я их уважаю",
+      "reversed": true
+    },
+    {
+      "id": 57,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS4_rebelliousness",
+      "text": "Я играю по правилам, даже когда никто не смотрит",
+      "reversed": true
+    },
+    {
+      "id": 58,
+      "block": 1,
+      "subscale": "novelty_seeking",
+      "facet": "NS4_rebelliousness",
+      "text": "Если человек на руководящей позиции, для этого есть причины",
+      "reversed": true
+    },
+    {
+      "id": 59,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD1_sentimentality",
+      "text": "У меня сердце мягче, чем у плюшевого мишки",
+      "reversed": false
+    },
+    {
+      "id": 60,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD1_sentimentality",
+      "text": "Рыдаю на фильмах. И на рекламе с котятами тоже",
+      "reversed": false
+    },
+    {
+      "id": 61,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD1_sentimentality",
+      "text": "Чужая беда цепляет так, будто это случилось со мной",
+      "reversed": false
+    },
+    {
+      "id": 62,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD1_sentimentality",
+      "text": "Мне достаточно грустной песни, чтобы глаза стали мокрыми",
+      "reversed": false
+    },
+    {
+      "id": 63,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD1_sentimentality",
+      "text": "Слезы у меня всегда наготове",
+      "reversed": false
+    },
+    {
+      "id": 64,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD1_sentimentality",
+      "text": "Чужие эмоции я впитываю как губка",
+      "reversed": false
+    },
+    {
+      "id": 65,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD1_sentimentality",
+      "text": "Когда плохо кому-то рядом, мне тоже физически плохо",
+      "reversed": false
+    },
+    {
+      "id": 66,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD1_sentimentality",
+      "text": "Чужие переживания меня не особо трогают",
+      "reversed": true
+    },
+    {
+      "id": 67,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD1_sentimentality",
+      "text": "Сантименты — это не про меня",
+      "reversed": true
+    },
+    {
+      "id": 68,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD1_sentimentality",
+      "text": "Мое лицо не выдает то, что внутри",
+      "reversed": true
+    },
+    {
+      "id": 69,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD2_friendliness",
+      "text": "Могу подружиться с человеком в очереди за кофе",
+      "reversed": false
+    },
+    {
+      "id": 70,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD2_friendliness",
+      "text": "Через пять минут знакомства мы уже как старые друзья",
+      "reversed": false
+    },
+    {
+      "id": 71,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD2_friendliness",
+      "text": "Мое призвание — знакомить людей друг с другом",
+      "reversed": false
+    },
+    {
+      "id": 72,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD2_friendliness",
+      "text": "Каждый человек для меня — интересная история",
+      "reversed": false
+    },
+    {
+      "id": 73,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD2_friendliness",
+      "text": "Разговоры — мой любимый вид досуга",
+      "reversed": false
+    },
+    {
+      "id": 74,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD2_friendliness",
+      "text": "Я открываюсь не сразу и не всем",
+      "reversed": true
+    },
+    {
+      "id": 75,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD2_friendliness",
+      "text": "Чувства есть, а слов для них — нет",
+      "reversed": true
+    },
+    {
+      "id": 76,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD2_friendliness",
+      "text": "Лишний раз с людьми пересекаться? Лучше без этого",
+      "reversed": true
+    },
+    {
+      "id": 77,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD2_friendliness",
+      "text": "Чужая жизнь мне не особо интересна, если честно",
+      "reversed": true
+    },
+    {
+      "id": 78,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD2_friendliness",
+      "text": "Между мной и другими всегда есть вежливая дистанция",
+      "reversed": true
+    },
+    {
+      "id": 79,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD3_selfdisclosure",
+      "text": "Если я что-то чувствую — все вокруг об этом узнают",
+      "reversed": false
+    },
+    {
+      "id": 80,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD3_selfdisclosure",
+      "text": "Я — открытая книга, читай кто хочет",
+      "reversed": false
+    },
+    {
+      "id": 81,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD3_selfdisclosure",
+      "text": "Мои сокровенные мысли не такие уж сокровенные",
+      "reversed": false
+    },
+    {
+      "id": 82,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD3_selfdisclosure",
+      "text": "Мое лицо всегда выдает, что я чувствую",
+      "reversed": false
+    },
+    {
+      "id": 83,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD3_selfdisclosure",
+      "text": "Если меня что-то беспокоит, я обязательно кому-нибудь расскажу",
+      "reversed": false
+    },
+    {
+      "id": 84,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD3_selfdisclosure",
+      "text": "Я из тех, кто больше слушает, чем говорит",
+      "reversed": true
+    },
+    {
+      "id": 85,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD3_selfdisclosure",
+      "text": "О себе предпочитаю помалкивать",
+      "reversed": true
+    },
+    {
+      "id": 86,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD3_selfdisclosure",
+      "text": "Все чувства — внутри, и там им самое место",
+      "reversed": true
+    },
+    {
+      "id": 87,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD3_selfdisclosure",
+      "text": "В компании я обычно тот, кто молчит",
+      "reversed": true
+    },
+    {
+      "id": 88,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD3_selfdisclosure",
+      "text": "Если можно промолчать — промолчу",
+      "reversed": true
+    },
+    {
+      "id": 89,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD4_dependence",
+      "text": "Мне физически некомфортно, если кто-то мной недоволен",
+      "reversed": false
+    },
+    {
+      "id": 90,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD4_dependence",
+      "text": "Сказали делать так — значит так и сделаю",
+      "reversed": false
+    },
+    {
+      "id": 91,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD4_dependence",
+      "text": "Чужие желания часто стоят в очереди впереди моих",
+      "reversed": false
+    },
+    {
+      "id": 92,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD4_dependence",
+      "text": "Давить на людей — совсем не мой стиль",
+      "reversed": false
+    },
+    {
+      "id": 93,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD4_dependence",
+      "text": "Если есть четкое указание — я его выполню",
+      "reversed": false
+    },
+    {
+      "id": 94,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD4_dependence",
+      "text": "Чужое мнение обо мне — не моя забота",
+      "reversed": true
+    },
+    {
+      "id": 95,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD4_dependence",
+      "text": "Я на раз вижу, где можно выиграть",
+      "reversed": true
+    },
+    {
+      "id": 96,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD4_dependence",
+      "text": "Уступать? Не в моем характере",
+      "reversed": true
+    },
+    {
+      "id": 97,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD4_dependence",
+      "text": "Быть как все — хуже не придумаешь",
+      "reversed": true
+    },
+    {
+      "id": 98,
+      "block": 1,
+      "subscale": "reward_dependence",
+      "facet": "RD4_dependence",
+      "text": "Рассчитывать можно только на себя",
+      "reversed": true
+    },
+    {
+      "id": 99,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Я умею ловить кайф от обычных вещей",
+      "reversed": true
+    },
+    {
+      "id": 100,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Устаю так быстро, будто марафон бегу, хотя просто живу",
+      "reversed": false
+    },
+    {
+      "id": 101,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Слезы со мной на короткой ноге",
+      "reversed": false
+    },
+    {
+      "id": 102,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Иногда кажется, что все вокруг счастливее меня",
+      "reversed": false
+    },
+    {
+      "id": 103,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Пока я думаю, момент уже ушел",
+      "reversed": false
+    },
+    {
+      "id": 104,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Бодрость — мое обычное состояние",
+      "reversed": true
+    },
+    {
+      "id": 105,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Спокойствие — мое естественное состояние",
+      "reversed": true
+    },
+    {
+      "id": 106,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Если впереди сложности, я начинаю нервничать задолго до них",
+      "reversed": false
+    },
+    {
+      "id": 107,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Для моей тревоги пустяков не существует — все важно",
+      "reversed": false
+    },
+    {
+      "id": 108,
+      "block": 2,
+      "subscale": "stai",
+      "text": "В целом я доволен(на) тем, как складывается жизнь",
+      "reversed": true
+    },
+    {
+      "id": 109,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Принимаю близко к сердцу вообще все, даже чужие проблемы",
+      "reversed": false
+    },
+    {
+      "id": 110,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Уверенность в себе? Она где-то потерялась по дороге",
+      "reversed": false
+    },
+    {
+      "id": 111,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Мир в целом безопасное место, и я в нем нормально себя чувствую",
+      "reversed": true
+    },
+    {
+      "id": 112,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Если можно обойти проблему стороной, я обойду",
+      "reversed": false
+    },
+    {
+      "id": 113,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Хандра заглядывает ко мне как старая знакомая",
+      "reversed": false
+    },
+    {
+      "id": 114,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Я в целом доволен(на) тем, как идут дела",
+      "reversed": true
+    },
+    {
+      "id": 115,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Любая мелочь может выбить меня из колеи",
+      "reversed": false
+    },
+    {
+      "id": 116,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Разочарования застревают во мне надолго, как песня, которую не выкинуть из головы",
+      "reversed": false
+    },
+    {
+      "id": 117,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Меня сложно раскачать, я стабилен(на)",
+      "reversed": true
+    },
+    {
+      "id": 118,
+      "block": 2,
+      "subscale": "stai",
+      "text": "Стоит подумать о делах — и тревога тут как тут",
+      "reversed": false
+    },
+    {
+      "id": 119,
+      "block": 3,
+      "subscale": "bas",
+      "facet": "BAS_drive",
+      "text": "Если я чего-то захотел(а), я выложусь на все сто",
+      "reversed": false
+    },
+    {
+      "id": 120,
+      "block": 3,
+      "subscale": "bas",
+      "facet": "BAS_drive",
+      "text": "Хочу — значит добьюсь. Стена на пути? Пробью стену",
+      "reversed": false
+    },
+    {
+      "id": 121,
+      "block": 3,
+      "subscale": "bas",
+      "facet": "BAS_drive",
+      "text": "Увидел(а) возможность — хватаю, пока не ушла",
+      "reversed": false
+    },
+    {
+      "id": 122,
+      "block": 3,
+      "subscale": "bas",
+      "facet": "BAS_drive",
+      "text": "Цель оправдывает средства, и это не просто поговорка",
+      "reversed": false
+    },
+    {
+      "id": 123,
+      "block": 3,
+      "subscale": "bas",
+      "facet": "BAS_fun",
+      "text": "Если звучит интересно — я уже в деле",
+      "reversed": false
+    },
+    {
+      "id": 124,
+      "block": 3,
+      "subscale": "bas",
+      "facet": "BAS_fun",
+      "text": "Иногда делаю что-то просто потому, что весело, без всякой цели",
+      "reversed": false
+    },
+    {
+      "id": 125,
+      "block": 3,
+      "subscale": "bas",
+      "facet": "BAS_fun",
+      "text": "Первый порыв — мой главный советчик",
+      "reversed": false
+    },
+    {
+      "id": 126,
+      "block": 3,
+      "subscale": "bas",
+      "facet": "BAS_fun",
+      "text": "Мне нужен драйв, без него жизнь пресная",
+      "reversed": false
+    },
+    {
+      "id": 127,
+      "block": 3,
+      "subscale": "bas",
+      "facet": "BAS_reward",
+      "text": "Делать то, в чем ты хорош(а) — одно из лучших ощущений",
+      "reversed": false
+    },
+    {
+      "id": 128,
+      "block": 3,
+      "subscale": "bas",
+      "facet": "BAS_reward",
+      "text": "Получил(а) желаемое — и заряда хватает на неделю",
+      "reversed": false
+    },
+    {
+      "id": 129,
+      "block": 3,
+      "subscale": "bas",
+      "facet": "BAS_reward",
+      "text": "Одна мысль, что мечта может сбыться, уже зажигает изнутри",
+      "reversed": false
+    },
+    {
+      "id": 130,
+      "block": 3,
+      "subscale": "bas",
+      "facet": "BAS_reward",
+      "text": "Хорошие новости действуют на меня как двойной эспрессо",
+      "reversed": false
+    },
+    {
+      "id": 131,
+      "block": 3,
+      "subscale": "bas",
+      "facet": "BAS_reward",
+      "text": "Выиграл(а) — и настроение взлетает до потолка",
+      "reversed": false
+    },
+    {
+      "id": 132,
+      "block": 3,
+      "subscale": "bis",
+      "text": "Даже когда все идет не по плану, я как-то не особо нервничаю",
+      "reversed": true
+    },
+    {
+      "id": 133,
+      "block": 3,
+      "subscale": "bis",
+      "text": "Одно критическое замечание — и мой день официально испорчен",
+      "reversed": false
+    },
+    {
+      "id": 134,
+      "block": 3,
+      "subscale": "bis",
+      "text": "Кажется, кто-то на меня обиделся? Все, не могу думать ни о чем другом",
+      "reversed": false
+    },
+    {
+      "id": 135,
+      "block": 3,
+      "subscale": "bis",
+      "text": "Впереди неприятности? Мой организм включает тревогу заранее",
+      "reversed": false
+    },
+    {
+      "id": 136,
+      "block": 3,
+      "subscale": "bis",
+      "text": "Наделал(а) ошибок — и мозг прокручивает это по кругу",
+      "reversed": false
+    },
+    {
+      "id": 137,
+      "block": 3,
+      "subscale": "bis",
+      "text": "Среди моих знакомых я, пожалуй, самый бесстрашный(ая)",
+      "reversed": true
+    },
+    {
+      "id": 138,
+      "block": 3,
+      "subscale": "bis",
+      "text": "Страх ошибки — мой постоянный фоновый процесс",
+      "reversed": false
+    },
+    {
+      "id": 139,
+      "block": 4,
+      "subscale": "shaps",
+      "text": "Залипнуть в любимый сериал — маленькое, но настоящее счастье",
+      "reversed": false
+    },
+    {
+      "id": 140,
+      "block": 4,
+      "subscale": "shaps",
+      "text": "Вечер с близкими людьми — лучше любой вечеринки",
+      "reversed": false
+    },
+    {
+      "id": 141,
+      "block": 4,
+      "subscale": "shaps",
+      "text": "Мое хобби — лучший способ перезагрузить голову",
+      "reversed": false
+    },
+    {
+      "id": 142,
+      "block": 4,
+      "subscale": "shaps",
+      "text": "Любимая еда — это почти духовный опыт",
+      "reversed": false
+    },
+    {
+      "id": 143,
+      "block": 4,
+      "subscale": "shaps",
+      "text": "Горячая ванна лечит все. Ну, почти все",
+      "reversed": false
+    },
+    {
+      "id": 144,
+      "block": 4,
+      "subscale": "shaps",
+      "text": "Запах свежей выпечки или моря — и жизнь прекрасна",
+      "reversed": false
+    },
+    {
+      "id": 145,
+      "block": 4,
+      "subscale": "shaps",
+      "text": "Чужая улыбка заряжает и меня тоже",
+      "reversed": false
+    },
+    {
+      "id": 146,
+      "block": 4,
+      "subscale": "shaps",
+      "text": "Произвести впечатление — отдельный вид удовольствия",
+      "reversed": false
+    },
+    {
+      "id": 147,
+      "block": 4,
+      "subscale": "shaps",
+      "text": "Хорошая книга затягивает не хуже сериала",
+      "reversed": false
+    },
+    {
+      "id": 148,
+      "block": 4,
+      "subscale": "shaps",
+      "text": "Утренний кофе — священный ритуал, который нельзя пропускать",
+      "reversed": false
+    },
+    {
+      "id": 149,
+      "block": 4,
+      "subscale": "shaps",
+      "text": "Солнечный день или неожиданный звонок друга — и настроение уже другое",
+      "reversed": false
+    },
+    {
+      "id": 150,
+      "block": 4,
+      "subscale": "shaps",
+      "text": "Красивый вид — и хочется остановиться и просто стоять и смотреть",
+      "reversed": false
+    },
+    {
+      "id": 151,
+      "block": 4,
+      "subscale": "shaps",
+      "text": "Помог(ла) кому-то — и день прошел не зря",
+      "reversed": false
+    },
+    {
+      "id": 152,
+      "block": 4,
+      "subscale": "shaps",
+      "text": "Похвалили — и готов(а) горы свернуть",
+      "reversed": false
+    }
   ]
 }
