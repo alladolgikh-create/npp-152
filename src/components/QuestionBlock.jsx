@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Question from './Question';
-import { getQuestionsByBlock, getBlockInfo } from '../utils/scoring';
+import questionnaire from '../data/questionnaire.json';
 
 const blockColors = {
   1: { gradient: 'linear-gradient(to right, #ff00ff, #d946ef)', accent: '#ff00ff', light: '#fff0fa' },
@@ -8,6 +8,17 @@ const blockColors = {
   3: { gradient: 'linear-gradient(to right, #ff00aa, #ff00ff)', accent: '#ff00aa', light: '#fff0f5' },
   4: { gradient: 'linear-gradient(to right, #00d4a8, #00b894)', accent: '#00d4a8', light: '#f0fdfa' },
 };
+
+function getBlockInfo(blockId) {
+  return questionnaire.blocks.find((b) => b.id === blockId);
+}
+
+function getQuestionsByBlock(blockId) {
+  const block = getBlockInfo(blockId);
+  if (!block) return [];
+  const [start, end] = block.questionsRange;
+  return questionnaire.questions.filter((q) => q.id >= start && q.id <= end);
+}
 
 export default function QuestionBlock({
   blockId,
@@ -47,6 +58,7 @@ export default function QuestionBlock({
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isLastQuestion, allQuestionsAnswered, answers, currentQuestion, onBlockComplete]);
+
   const answeredInBlock = questions.filter((q) => answers[q.id] !== undefined).length;
   const unansweredCount = questions.length - answeredInBlock;
 

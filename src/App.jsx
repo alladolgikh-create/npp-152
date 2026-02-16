@@ -3,17 +3,16 @@ import WelcomeScreen from './components/WelcomeScreen';
 import QuestionBlock from './components/QuestionBlock';
 import ProgressBar from './components/ProgressBar';
 import Results from './components/Results';
-import {
-  calculateNeurotransmitterScales,
-  getTotalQuestions,
-  getTotalBlocks,
-} from './utils/scoring';
 
 const STATES = {
   WELCOME: 'welcome',
   QUESTIONNAIRE: 'questionnaire',
+  LOADING: 'loading',
   RESULTS: 'results',
 };
+
+const totalQuestions = 152;
+const totalBlocks = 4;
 
 function App() {
   const [appState, setAppState] = useState(STATES.WELCOME);
@@ -22,9 +21,6 @@ function App() {
   const [answerIndices, setAnswerIndices] = useState({});
   const [results, setResults] = useState(null);
   const [userName, setUserName] = useState('');
-
-  const totalQuestions = getTotalQuestions();
-  const totalBlocks = getTotalBlocks();
 
   const answeredCount = useMemo(() => {
     return Object.keys(answers).length;
@@ -49,14 +45,35 @@ function App() {
     }));
   };
 
-  const handleBlockComplete = () => {
+  const handleBlockComplete = async () => {
     if (currentBlock < totalBlocks) {
       setCurrentBlock((prev) => prev + 1);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      const calculatedResults = calculateNeurotransmitterScales(answers);
-      setResults(calculatedResults);
-      setAppState(STATES.RESULTS);
+      setAppState(STATES.LOADING);
+
+      try {
+        const response = await fetch('https://api.crazymethod.pro/api/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ answers, userName }),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          setResults(data.results);
+          setAppState(STATES.RESULTS);
+        } else {
+          alert('Ошибка при обработке результатов. Попробуйте еще раз.');
+          setAppState(STATES.QUESTIONNAIRE);
+        }
+      } catch (error) {
+        console.error('API error:', error);
+        alert('Ошибка соединения с сервером. Проверьте интернет и попробуйте еще раз.');
+        setAppState(STATES.QUESTIONNAIRE);
+      }
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
@@ -100,6 +117,13 @@ function App() {
               onPreviousBlock={handlePreviousBlock}
             />
           </>
+        )}
+
+        {appState === STATES.LOADING && (
+          <div className="text-center py-20">
+            <div className="inline-block w-12 h-12 border-4 border-fuchsia-300 border-t-fuchsia-600 rounded-full animate-spin mb-4"></div>
+            <p className="text-lg text-gray-600">Анализируем ваш нейрохимический профиль...</p>
+          </div>
         )}
 
         {appState === STATES.RESULTS && results && (

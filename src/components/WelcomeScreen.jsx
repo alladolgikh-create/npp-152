@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { getMetaInfo } from '../utils/scoring';
+import questionnaire from '../data/questionnaire.json';
 
 export default function WelcomeScreen({ onStart }) {
-  const meta = getMetaInfo();
+  const meta = questionnaire.meta;
   const [userName, setUserName] = useState('');
 
   const handleStart = () => {
