@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import RadarChart from './RadarChart';
 
 const scaleColors = {
@@ -16,52 +15,10 @@ const interpretationColors = {
 
 export default function Results({ results, userName, onRestart }) {
   const { scales } = results;
-  const resultsRef = useRef(null);
-
-  const handleDownloadPDF = async () => {
-    if (!resultsRef.current) return;
-
-    try {
-      const [{ default: html2canvas }, { jsPDF }] = await Promise.all([
-        import('html2canvas'),
-        import('jspdf'),
-      ]);
-
-      const canvas = await html2canvas(resultsRef.current, {
-        scale: 2,
-        useCORS: true,
-        backgroundColor: '#f8fafc',
-      });
-
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-      let heightLeft = pdfHeight;
-      let position = 0;
-      const pageHeight = pdf.internal.pageSize.getHeight();
-
-      pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight);
-      heightLeft -= pageHeight;
-
-      while (heightLeft > 0) {
-        position = heightLeft - pdfHeight;
-        pdf.addPage();
-        pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight);
-        heightLeft -= pageHeight;
-      }
-
-      pdf.save(`NPP-152_${userName}_результаты.pdf`);
-    } catch (error) {
-      console.error('Ошибка при создании PDF:', error);
-      alert('Не удалось создать PDF. Попробуйте ещё раз.');
-    }
-  };
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      <div ref={resultsRef} className="bg-gradient-to-br from-gray-50 to-fuchsia-50 p-4 rounded-2xl">
+      <div className="bg-gradient-to-br from-gray-50 to-fuchsia-50 p-4 rounded-2xl">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold mb-2" style={{ color: '#ff00ff' }}>
             {userName}, ваш нейротрансмиттерный профиль
@@ -125,21 +82,13 @@ export default function Results({ results, userName, onRestart }) {
       </div>
 
       <div className="rounded-xl p-6 mb-8 text-center" style={{ backgroundColor: '#fff0fa' }}>
-        <p className="mb-4" style={{ color: '#d946ef' }}>
-          Для персональной интерпретации результатов скачайте PDF или сделайте скриншот этой страницы
-          и отправьте <strong>Алле Долгих</strong> в Telegram.
+        <p className="mb-2" style={{ color: '#d946ef' }}>
+          Чтобы сохранить результат, сделайте скриншот
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button
-            onClick={handleDownloadPDF}
-            className="px-6 py-3 text-white rounded-xl font-medium transition-all shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2"
-            style={{ backgroundColor: '#00d4a8' }}
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            Скачать PDF
-          </button>
+        <p className="mb-4" style={{ color: '#d946ef' }}>
+          Для запроса персональной интерпретации результатов пишите <strong>Алле Долгих</strong> в Telegram
+        </p>
+        <div className="flex justify-center">
           <a
             href="https://t.me/AllokDolgikh"
             target="_blank"
