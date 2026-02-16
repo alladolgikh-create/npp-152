@@ -26,6 +26,23 @@ export default function QuestionBlock({
     setCurrentQuestionIndex(0);
   }, [blockId]);
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Enter') {
+        if (isLastQuestion) {
+          if (allQuestionsAnswered) {
+            onBlockComplete();
+          }
+        } else if (answers[currentQuestion?.id] !== undefined) {
+          setCurrentQuestionIndex((prev) => prev + 1);
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isLastQuestion, allQuestionsAnswered, answers, currentQuestion, onBlockComplete]);
+
   const currentQuestion = questions[currentQuestionIndex];
   const isFirstQuestion = currentQuestionIndex === 0;
   const isLastQuestion = currentQuestionIndex === questions.length - 1;
