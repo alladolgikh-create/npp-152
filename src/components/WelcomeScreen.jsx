@@ -12,16 +12,16 @@ export default function WelcomeScreen({ onStart }) {
   return (
     <div className="w-full max-w-2xl mx-auto text-center">
       {/* Header with code-style logo */}
-      <div className="bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-2xl p-8 mb-8 text-white">
+      <div className="rounded-2xl p-8 mb-8 text-white" style={{ background: 'linear-gradient(to right, #ff00ff, #ff00aa)' }}>
         {/* Code-style logo */}
         <div className="font-mono text-left text-sm mb-4 opacity-90">
-          <p className="text-fuchsia-200">// нейрохимическое профилирование</p>
+          <p style={{ color: 'rgba(255,255,255,0.6)' }}>// нейрохимическое профилирование</p>
           <p>
-            <span style={{ color: '#ffb3b3' }}>run</span>
+            <span className="text-white">run</span>
             {' '}
-            <span style={{ color: '#7fffd4' }}>test</span>
+            <span style={{ color: '#00ffcc' }}>test</span>
             <span>(</span>
-            <span style={{ color: '#ffe066' }}>"brain"</span>
+            <span style={{ color: '#00ffcc' }}>"brain"</span>
             <span>) {'{'}</span>
           </p>
         </div>
@@ -31,7 +31,7 @@ export default function WelcomeScreen({ onStart }) {
         {/* Closing brace */}
         <div className="font-mono text-left text-sm mt-4 opacity-90">
           <p>{'}'}</p>
-          <p className="text-fuchsia-200">// → 152 вопроса → ваш уникальный профиль</p>
+          <p style={{ color: 'rgba(255,255,255,0.6)' }}>// → 152 вопроса → ваш уникальный профиль</p>
         </div>
       </div>
 
@@ -72,27 +72,27 @@ export default function WelcomeScreen({ onStart }) {
           </h3>
           <ul className="space-y-3">
             <li className="flex items-start">
-              <span className="w-3 h-3 rounded-full mt-1.5 mr-3 flex-shrink-0" style={{ backgroundColor: '#00d4a8' }}></span>
+              <span className="w-3 h-3 rounded-full mt-1.5 mr-3 flex-shrink-0" style={{ backgroundColor: '#00ffcc' }}></span>
               <span className="text-gray-700">
-                <strong className="text-pink-500">Серотонин</strong> - эмоциональная стабильность и регуляция тревожности
+                <strong style={{ color: '#00ffcc' }}>Серотонин</strong> - эмоциональная стабильность и регуляция тревожности
               </span>
             </li>
             <li className="flex items-start">
-              <span className="w-3 h-3 rounded-full mt-1.5 mr-3 flex-shrink-0" style={{ backgroundColor: '#00d4a8' }}></span>
+              <span className="w-3 h-3 rounded-full mt-1.5 mr-3 flex-shrink-0" style={{ backgroundColor: '#ff00ff' }}></span>
               <span className="text-gray-700">
-                <strong className="text-pink-500">Дофамин</strong> - мотивация, вознаграждение и поиск новизны
+                <strong style={{ color: '#ff00ff' }}>Дофамин</strong> - мотивация, вознаграждение и поиск новизны
               </span>
             </li>
             <li className="flex items-start">
-              <span className="w-3 h-3 rounded-full mt-1.5 mr-3 flex-shrink-0" style={{ backgroundColor: '#00d4a8' }}></span>
+              <span className="w-3 h-3 rounded-full mt-1.5 mr-3 flex-shrink-0" style={{ backgroundColor: '#ff00aa' }}></span>
               <span className="text-gray-700">
-                <strong className="text-pink-500">Норадреналин</strong> - социальная привязанность и эмоциональная отзывчивость
+                <strong style={{ color: '#ff00aa' }}>Норадреналин</strong> - социальная привязанность и эмоциональная отзывчивость
               </span>
             </li>
             <li className="flex items-start">
-              <span className="w-3 h-3 rounded-full mt-1.5 mr-3 flex-shrink-0" style={{ backgroundColor: '#00d4a8' }}></span>
+              <span className="w-3 h-3 rounded-full mt-1.5 mr-3 flex-shrink-0" style={{ backgroundColor: '#d946ef' }}></span>
               <span className="text-gray-700">
-                <strong className="text-pink-500">ГАМК</strong> - торможение и контроль импульсов
+                <strong style={{ color: '#d946ef' }}>ГАМК</strong> - торможение и контроль импульсов
               </span>
             </li>
           </ul>
