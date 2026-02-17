@@ -11,22 +11,29 @@ export default function WelcomeScreen({ onStart }) {
 
   return (
     <div className="w-full max-w-2xl mx-auto text-center">
-      {/* Code-style Logo */}
-      <div className="rounded-2xl p-8 mb-8 font-mono text-left" style={{ backgroundColor: '#1a1a2e' }}>
-        <p className="text-gray-500 text-sm mb-2">// нейрохимическое профилирование</p>
-        <p className="text-lg mb-1">
-          <span style={{ color: '#ff6b6b' }}>run</span>
-          {' '}
-          <span style={{ color: '#00d4a8' }}>test</span>
-          <span className="text-white">(</span>
-          <span style={{ color: '#feca57' }}>"brain"</span>
-          <span className="text-white">) {'{'}</span>
-        </p>
-        <h1 className="text-5xl font-bold text-white text-center my-6 tracking-wider">
-          ВПРГМД
-        </h1>
-        <p className="text-lg text-white mb-2">{'}'}</p>
-        <p className="text-gray-500 text-sm">// → 152 вопроса → ваш уникальный профиль</p>
+      {/* Header with code-style logo */}
+      <div className="bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-2xl p-8 mb-8 text-white">
+        {/* Code-style logo */}
+        <div className="font-mono text-left text-sm mb-4 opacity-90">
+          <p className="text-fuchsia-200">// нейрохимическое профилирование</p>
+          <p>
+            <span style={{ color: '#ffb3b3' }}>run</span>
+            {' '}
+            <span style={{ color: '#7fffd4' }}>test</span>
+            <span>(</span>
+            <span style={{ color: '#ffe066' }}>"brain"</span>
+            <span>) {'{'}</span>
+          </p>
+        </div>
+
+        <h1 className="text-4xl font-bold mb-2">ВПРГМД-152</h1>
+        <p className="text-xl text-fuchsia-100">Нейротрансмиттерное профилирование</p>
+
+        {/* Closing brace */}
+        <div className="font-mono text-left text-sm mt-4 opacity-90">
+          <p>{'}'}</p>
+          <p className="text-fuchsia-200">// → 152 вопроса → ваш уникальный профиль</p>
+        </div>
       </div>
 
       <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
