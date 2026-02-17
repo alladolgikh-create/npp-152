@@ -24,7 +24,7 @@ export default function Results({ results, userName, onRestart }) {
             {userName}, ваш нейротрансмиттерный профиль
           </h1>
           <p style={{ color: '#d946ef' }}>
-            Результаты опросника NPP-152
+            Результаты опросника ВПРГМД-152
           </p>
         </div>
 
