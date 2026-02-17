@@ -12,26 +12,26 @@ export default function WelcomeScreen({ onStart }) {
   return (
     <div className="w-full max-w-2xl mx-auto text-center">
       {/* Header with code-style logo */}
-      <div className="rounded-2xl p-8 mb-8" style={{ background: 'linear-gradient(to right, #00ffcc, #00d4a8)' }}>
+      <div className="rounded-2xl p-8 mb-8" style={{ backgroundColor: '#b3ffe6' }}>
         {/* Code-style logo */}
         <div className="font-mono text-left text-sm mb-4">
-          <p style={{ color: 'rgba(0,0,0,0.5)' }}>// нейрохимическое профилирование</p>
+          <p style={{ color: 'rgba(0,0,0,0.4)' }}>// нейрохимическое профилирование</p>
           <p>
-            <span style={{ color: '#ff00ff' }}>run</span>
+            <span style={{ color: '#e74c3c' }}>run</span>
             {' '}
-            <span style={{ color: '#ff00aa' }}>test</span>
+            <span style={{ color: '#2980b9' }}>test</span>
             <span style={{ color: '#1a1a2e' }}>(</span>
-            <span style={{ color: '#d946ef' }}>"brain"</span>
+            <span style={{ color: '#f39c12' }}>"brain"</span>
             <span style={{ color: '#1a1a2e' }}>) {'{'}</span>
           </p>
         </div>
 
-        <h1 className="text-4xl font-bold mb-2 text-center" style={{ color: '#ff00ff' }}>ВПРГМД-152</h1>
+        <h1 className="text-4xl font-bold mb-2 text-center" style={{ color: '#ff00aa' }}>ВПРГМД-152</h1>
 
         {/* Closing brace */}
         <div className="font-mono text-left text-sm mt-4">
           <p style={{ color: '#1a1a2e' }}>{'}'}</p>
-          <p style={{ color: 'rgba(0,0,0,0.5)' }}>// → 152 вопроса → ваш уникальный профиль</p>
+          <p style={{ color: 'rgba(0,0,0,0.4)' }}>// → 152 вопроса → ваш уникальный профиль</p>
         </div>
       </div>
 
