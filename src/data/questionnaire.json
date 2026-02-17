@@ -1,8 +1,8 @@
 {
   "meta": {
-    "name": "NPP-152",
+    "name": "ВПРГМД-152",
     "fullName": "Neurotransmitter Personality Profiler",
-    "nameRu": "Опросник нейротрансмиттерного профиля личности",
+    "nameRu": "Нейротрансмиттерное профилирование",
     "version": "1.0",
     "date": "2026-01",
     "totalQuestions": 152,
