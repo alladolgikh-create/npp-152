@@ -27,7 +27,6 @@ export default function WelcomeScreen({ onStart }) {
         </div>
 
         <h1 className="text-4xl font-bold mb-2">ВПРГМД-152</h1>
-        <p className="text-xl text-fuchsia-100">Нейротрансмиттерное профилирование</p>
 
         {/* Closing brace */}
         <div className="font-mono text-left text-sm mt-4 opacity-90">
