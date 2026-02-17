@@ -12,26 +12,26 @@ export default function WelcomeScreen({ onStart }) {
   return (
     <div className="w-full max-w-2xl mx-auto text-center">
       {/* Header with code-style logo */}
-      <div className="rounded-2xl p-8 mb-8 text-white" style={{ background: 'linear-gradient(to right, #ff00ff, #ff00aa)' }}>
+      <div className="rounded-2xl p-8 mb-8" style={{ background: 'linear-gradient(to right, #00ffcc, #00d4a8)' }}>
         {/* Code-style logo */}
-        <div className="font-mono text-left text-sm mb-4 opacity-90">
-          <p style={{ color: 'rgba(255,255,255,0.6)' }}>// нейрохимическое профилирование</p>
+        <div className="font-mono text-left text-sm mb-4">
+          <p style={{ color: 'rgba(0,0,0,0.5)' }}>// нейрохимическое профилирование</p>
           <p>
-            <span className="text-white">run</span>
+            <span style={{ color: '#ff00ff' }}>run</span>
             {' '}
-            <span style={{ color: '#00ffcc' }}>test</span>
-            <span>(</span>
-            <span style={{ color: '#00ffcc' }}>"brain"</span>
-            <span>) {'{'}</span>
+            <span style={{ color: '#ff00aa' }}>test</span>
+            <span style={{ color: '#1a1a2e' }}>(</span>
+            <span style={{ color: '#d946ef' }}>"brain"</span>
+            <span style={{ color: '#1a1a2e' }}>) {'{'}</span>
           </p>
         </div>
 
-        <h1 className="text-4xl font-bold mb-2">ВПРГМД-152</h1>
+        <h1 className="text-4xl font-bold mb-2 text-center" style={{ color: '#ff00ff' }}>ВПРГМД-152</h1>
 
         {/* Closing brace */}
-        <div className="font-mono text-left text-sm mt-4 opacity-90">
-          <p>{'}'}</p>
-          <p style={{ color: 'rgba(255,255,255,0.6)' }}>// → 152 вопроса → ваш уникальный профиль</p>
+        <div className="font-mono text-left text-sm mt-4">
+          <p style={{ color: '#1a1a2e' }}>{'}'}</p>
+          <p style={{ color: 'rgba(0,0,0,0.5)' }}>// → 152 вопроса → ваш уникальный профиль</p>
         </div>
       </div>
 
@@ -72,9 +72,9 @@ export default function WelcomeScreen({ onStart }) {
           </h3>
           <ul className="space-y-3">
             <li className="flex items-start">
-              <span className="w-3 h-3 rounded-full mt-1.5 mr-3 flex-shrink-0" style={{ backgroundColor: '#00ffcc' }}></span>
+              <span className="w-3 h-3 rounded-full mt-1.5 mr-3 flex-shrink-0" style={{ backgroundColor: '#00b894' }}></span>
               <span className="text-gray-700">
-                <strong style={{ color: '#00ffcc' }}>Серотонин</strong> - эмоциональная стабильность и регуляция тревожности
+                <strong style={{ color: '#00b894' }}>Серотонин</strong> - эмоциональная стабильность и регуляция тревожности
               </span>
             </li>
             <li className="flex items-start">
