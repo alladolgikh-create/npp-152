@@ -1,8 +1,8 @@
 export default function Question({ question, options, selectedValue, selectedIndex, onAnswer, accentColor = '#ff00ff' }) {
   return (
     <div className="rounded-xl p-6 mb-4" style={{ backgroundColor: '#1a1a2e', border: '1px solid #333333' }}>
-      <p className="text-lg font-medium mb-6" style={{ color: '#e0e0e0', fontSize: '17px' }}>
-        <span className="font-bold mr-2" style={{ color: accentColor, fontFamily: 'var(--font-mono)' }}>{question.id}.</span>
+      <p className="mb-6" style={{ color: '#e0e0e0', fontSize: '17px', fontWeight: 400, lineHeight: 1.6 }}>
+        <span className="mr-2" style={{ color: accentColor, fontWeight: 700 }}>{question.id}.</span>
         {question.text}
       </p>
 
@@ -18,6 +18,7 @@ export default function Question({ question, options, selectedValue, selectedInd
                 border: `2px solid ${isSelected ? accentColor : '#333333'}`,
                 backgroundColor: isSelected ? accentColor + '11' : '#252540',
                 color: isSelected ? accentColor : '#e0e0e0',
+                fontWeight: 500,
               }}
               onMouseEnter={(e) => {
                 if (!isSelected) {
