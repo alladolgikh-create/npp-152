@@ -96,7 +96,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-fuchsia-50 py-8 px-4">
+    <div className="min-h-screen py-8 px-4" style={{ backgroundColor: '#0a0a0a' }}>
       <div className="max-w-4xl mx-auto">
         {appState === STATES.WELCOME && <WelcomeScreen onStart={handleStart} />}
 
@@ -121,8 +121,8 @@ function App() {
 
         {appState === STATES.LOADING && (
           <div className="text-center py-20">
-            <div className="inline-block w-12 h-12 border-4 border-fuchsia-300 border-t-fuchsia-600 rounded-full animate-spin mb-4"></div>
-            <p className="text-lg text-gray-600">Анализируем ваш нейрохимический профиль...</p>
+            <div className="inline-block w-12 h-12 border-4 rounded-full animate-spin mb-4" style={{ borderColor: '#ff00ff33', borderTopColor: '#ff00ff' }}></div>
+            <p className="text-lg" style={{ color: '#888888', fontFamily: 'var(--font-mono)' }}>Анализируем ваш нейрохимический профиль...</p>
           </div>
         )}
 

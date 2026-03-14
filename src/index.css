@@ -1,29 +1,57 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: 'Century Gothic';
-  src: local('Century Gothic'), local('CenturyGothic');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Century Gothic';
-  src: local('Century Gothic Bold'), local('CenturyGothic-Bold');
-  font-weight: bold;
-  font-style: normal;
-}
-
 :root {
-  font-family: 'Century Gothic', 'Avenir', 'Futura', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
+  --color-bg: #0a0a0a;
+  --color-section: #111111;
+  --color-card: #1a1a2e;
+  --color-card-hover: #252540;
+  --color-text: #e0e0e0;
+  --color-text-secondary: #888888;
+  --color-text-tertiary: #555555;
+  --color-accent: #ff00ff;
+  --color-border: #333333;
+  --color-border-accent: #ff00ff33;
+  --color-serotonin: #ff00ff;
+  --color-dopamine: #39ff14;
+  --color-noradrenaline: #00cec9;
+  --color-gaba: #ff6b6b;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+  --font-sans: 'Inter', system-ui, sans-serif;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: 'Century Gothic', 'Avenir', 'Futura', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
 }
 
 input, button, textarea, select {
   font-family: inherit;
+}
+
+/* Dark scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #333333 #111111;
 }
