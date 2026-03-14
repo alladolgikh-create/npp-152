@@ -3,10 +3,10 @@ import Question from './Question';
 import questionnaire from '../data/questionnaire.json';
 
 const blockColors = {
-  1: { gradient: 'linear-gradient(to right, #ff00ff, #d946ef)', accent: '#ff00ff', light: '#fff0fa' },
-  2: { gradient: 'linear-gradient(to right, #d946ef, #a855f7)', accent: '#d946ef', light: '#faf5ff' },
-  3: { gradient: 'linear-gradient(to right, #ff00aa, #ff00ff)', accent: '#ff00aa', light: '#fff0f5' },
-  4: { gradient: 'linear-gradient(to right, #00d4a8, #00b894)', accent: '#00d4a8', light: '#f0fdfa' },
+  1: { accent: '#ff00ff', dark: '#ff00ff22' },
+  2: { accent: '#39ff14', dark: '#39ff1422' },
+  3: { accent: '#00cec9', dark: '#00cec922' },
+  4: { accent: '#ff6b6b', dark: '#ff6b6b22' },
 };
 
 function getBlockInfo(blockId) {
@@ -87,24 +87,24 @@ export default function QuestionBlock({
   };
 
   if (!block || !currentQuestion) {
-    return <div>Loading...</div>;
+    return <div style={{ color: '#888888' }}>Loading...</div>;
   }
 
   const canGoBack = !(isFirstQuestion && blockId === 1);
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <div className="text-white rounded-xl p-6 mb-6" style={{ background: colors.gradient }}>
-        <h2 className="text-2xl font-bold mb-2">{block.title}</h2>
-        <p className="text-white/80">{block.instruction}</p>
+      <div className="rounded-xl p-6 mb-6" style={{ backgroundColor: '#1a1a2e', border: `1px solid ${colors.accent}44` }}>
+        <h2 className="text-2xl font-bold mb-2" style={{ color: colors.accent, fontFamily: 'var(--font-mono)' }}>{block.title}</h2>
+        <p style={{ color: '#888888' }}>{block.instruction}</p>
         {block.responseScale.note && (
-          <p className="mt-3 text-sm bg-white/20 rounded-lg p-3">
+          <p className="mt-3 text-sm rounded-lg p-3" style={{ backgroundColor: colors.dark, color: '#e0e0e0' }}>
             {block.responseScale.note}
           </p>
         )}
       </div>
 
-      <div className="mb-4 text-sm text-center" style={{ color: colors.accent }}>
+      <div className="mb-4 text-sm text-center" style={{ color: colors.accent, fontFamily: 'var(--font-mono)' }}>
         Вопрос {currentQuestionIndex + 1} из {questions.length} в этом блоке
       </div>
 
@@ -123,11 +123,10 @@ export default function QuestionBlock({
           disabled={!canGoBack}
           className="px-6 py-3 rounded-lg font-medium transition-all"
           style={{
-            backgroundColor: canGoBack ? colors.light : '#e5e7eb',
-            color: canGoBack ? colors.accent : '#9ca3af',
+            backgroundColor: canGoBack ? 'transparent' : '#1a1a2e',
+            color: canGoBack ? colors.accent : '#555555',
             cursor: canGoBack ? 'pointer' : 'not-allowed',
-            borderWidth: '2px',
-            borderColor: canGoBack ? colors.accent : 'transparent',
+            border: `2px solid ${canGoBack ? colors.accent : '#333333'}`,
           }}
         >
           Назад
@@ -137,17 +136,17 @@ export default function QuestionBlock({
           allQuestionsAnswered ? (
             <button
               onClick={handleComplete}
-              className="px-6 py-3 text-white rounded-lg font-medium transition-all hover:scale-105"
-              style={{ backgroundColor: '#00d4a8' }}
+              className="px-6 py-3 rounded-lg font-medium transition-all hover:brightness-110"
+              style={{ backgroundColor: colors.accent, color: '#0a0a0a', fontWeight: 'bold' }}
             >
               {blockId === 4 ? 'Завершить' : 'Следующий блок'}
             </button>
           ) : (
             <div className="text-right">
-              <p className="text-sm mb-1" style={{ color: colors.accent }}>
+              <p className="text-sm mb-1" style={{ color: '#ff6b6b' }}>
                 Пропущено вопросов: {unansweredCount}
               </p>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs" style={{ color: '#555555' }}>
                 Вернитесь и ответьте на все вопросы
               </p>
             </div>
@@ -159,14 +158,16 @@ export default function QuestionBlock({
             className="px-6 py-3 rounded-lg font-medium transition-all"
             style={{
               backgroundColor: answers[currentQuestion.id] === undefined
-                ? '#e5e7eb'
+                ? '#1a1a2e'
                 : colors.accent,
               color: answers[currentQuestion.id] === undefined
-                ? '#9ca3af'
-                : 'white',
+                ? '#555555'
+                : '#0a0a0a',
               cursor: answers[currentQuestion.id] === undefined
                 ? 'not-allowed'
-                : 'pointer'
+                : 'pointer',
+              border: `2px solid ${answers[currentQuestion.id] === undefined ? '#333333' : colors.accent}`,
+              fontWeight: 'bold',
             }}
           >
             Далее

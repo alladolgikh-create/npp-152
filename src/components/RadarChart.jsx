@@ -18,6 +18,8 @@ ChartJS.register(
   Legend
 );
 
+const scaleColors = ['#ff00ff', '#39ff14', '#00cec9', '#ff6b6b'];
+
 export default function RadarChart({ results }) {
   const labels = [
     results.serotonin.name,
@@ -39,13 +41,13 @@ export default function RadarChart({ results }) {
       {
         label: 'Нейротрансмиттерный профиль',
         data: values,
-        backgroundColor: 'rgba(255, 0, 255, 0.15)',
+        backgroundColor: 'rgba(255, 0, 255, 0.1)',
         borderColor: '#ff00ff',
         borderWidth: 2,
-        pointBackgroundColor: '#ff00aa',
-        pointBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: '#ff00ff',
+        pointBackgroundColor: scaleColors,
+        pointBorderColor: scaleColors,
+        pointHoverBackgroundColor: '#0a0a0a',
+        pointHoverBorderColor: scaleColors,
         pointRadius: 6,
         pointHoverRadius: 8,
       },
@@ -60,6 +62,11 @@ export default function RadarChart({ results }) {
         display: false,
       },
       tooltip: {
+        backgroundColor: '#1a1a2e',
+        titleColor: '#e0e0e0',
+        bodyColor: '#e0e0e0',
+        borderColor: '#333333',
+        borderWidth: 1,
         callbacks: {
           label: (context) => {
             return `${context.label}: ${context.raw.toFixed(1)}%`;
@@ -70,18 +77,18 @@ export default function RadarChart({ results }) {
     scales: {
       r: {
         angleLines: {
-          color: 'rgba(217, 70, 239, 0.2)',
+          color: '#333333',
         },
         grid: {
-          color: 'rgba(217, 70, 239, 0.2)',
+          color: '#333333',
         },
         pointLabels: {
           font: {
             size: 14,
             weight: '600',
-            family: "'Century Gothic', sans-serif",
+            family: "'JetBrains Mono', monospace",
           },
-          color: '#d946ef',
+          color: scaleColors,
         },
         suggestedMin: 0,
         suggestedMax: 100,
@@ -90,7 +97,7 @@ export default function RadarChart({ results }) {
           font: {
             size: 10,
           },
-          color: '#9CA3AF',
+          color: '#555555',
           backdropColor: 'transparent',
         },
       },
