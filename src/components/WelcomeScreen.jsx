@@ -53,27 +53,27 @@ export default function WelcomeScreen({ onStart }) {
           />
         </div>
 
-        <h2 className="text-2xl font-bold mb-6" style={{ color: '#ff00ff', fontFamily: 'var(--font-mono)' }}>
+        <h2 className="text-2xl font-bold mb-6" style={{ color: '#e0e0e0' }}>
           Об опроснике
         </h2>
 
         <div className="grid grid-cols-2 gap-4 mb-8">
           <div className="rounded-lg p-4" style={{ backgroundColor: '#1a1a2e', border: '1px solid #333333' }}>
-            <p className="text-3xl font-bold" style={{ color: '#ff00ff', fontFamily: 'var(--font-mono)' }}>{meta.totalQuestions}</p>
+            <p className="text-3xl font-bold" style={{ color: '#39ff14' }}>{meta.totalQuestions}</p>
             <p style={{ color: '#888888' }}>вопросов</p>
           </div>
           <div className="rounded-lg p-4" style={{ backgroundColor: '#1a1a2e', border: '1px solid #333333' }}>
-            <p className="text-3xl font-bold" style={{ color: '#ff00ff', fontFamily: 'var(--font-mono)' }}>{meta.blocks}</p>
+            <p className="text-3xl font-bold" style={{ color: '#00cec9' }}>{meta.blocks}</p>
             <p style={{ color: '#888888' }}>блока</p>
           </div>
           <div className="rounded-lg p-4 col-span-2" style={{ backgroundColor: '#1a1a2e', border: '1px solid #333333' }}>
-            <p className="text-2xl font-bold" style={{ color: '#ff00ff', fontFamily: 'var(--font-mono)' }}>{meta.estimatedTime}</p>
+            <p className="text-2xl font-bold" style={{ color: '#ff6b6b' }}>{meta.estimatedTime}</p>
             <p style={{ color: '#888888' }}>примерное время прохождения</p>
           </div>
         </div>
 
         <div className="text-left space-y-4 mb-8">
-          <h3 className="text-lg font-semibold" style={{ color: '#ff00ff', fontFamily: 'var(--font-mono)' }}>
+          <h3 className="text-lg font-semibold" style={{ color: '#e0e0e0' }}>
             Что измеряет опросник:
           </h3>
           <ul className="space-y-3">
@@ -105,7 +105,7 @@ export default function WelcomeScreen({ onStart }) {
         </div>
 
         <div className="text-left mb-8">
-          <h3 className="text-lg font-semibold mb-3" style={{ color: '#ff00ff', fontFamily: 'var(--font-mono)' }}>
+          <h3 className="text-lg font-semibold mb-3" style={{ color: '#e0e0e0' }}>
             Научная основа
           </h3>
           <p className="text-sm italic mb-3" style={{ color: '#888888' }}>
@@ -123,8 +123,8 @@ export default function WelcomeScreen({ onStart }) {
           </p>
         </div>
 
-        <div className="rounded-lg p-4 mb-4 text-left" style={{ backgroundColor: '#1a1a2e', border: '1px solid #ff00ff33' }}>
-          <p className="text-sm" style={{ color: '#ff00ff' }}>
+        <div className="rounded-lg p-4 mb-4 text-left" style={{ backgroundColor: '#1a1a2e', border: '1px solid #00cec933' }}>
+          <p className="text-sm" style={{ color: '#00cec9' }}>
             <strong>Рекомендации:</strong> Отвечайте на вопросы быстро и честно,
             основываясь на первом впечатлении. Не существует правильных или
             неправильных ответов — важно только ваше личное восприятие.
