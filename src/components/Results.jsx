@@ -62,7 +62,7 @@ function FormulaBlock({ formula }) {
     <div className="mb-8">
       {/* Title */}
       <p className="mb-4 text-sm" style={{ fontFamily: 'var(--font-mono)', color: '#555555' }}>
-        // твоя персональная <span style={{ color: '#ff00ff' }}>формула</span>
+        // ваша персональная <span style={{ color: '#ff00ff' }}>формула</span>
       </p>
 
       {/* Formula card */}
@@ -113,15 +113,18 @@ function FormulaBlock({ formula }) {
   );
 }
 
-// Telegram channel block
-function TelegramChannelBlock() {
+// Combined action block
+function ActionBlock() {
   return (
     <div
       className="rounded-xl p-6 mb-8"
       style={{ backgroundColor: '#1a1a2e', border: '1px solid #333333' }}
     >
       <p className="mb-4" style={{ color: '#888888', fontSize: '13px', lineHeight: 1.7 }}>
-        Если тебе интересно подробно узнать о том, как можно применять знания своего профиля, то приходи ко мне в гости
+        Чтобы сохранить результат, сделайте скриншот
+      </p>
+      <p className="mb-4" style={{ color: '#888888', fontSize: '13px', lineHeight: 1.7 }}>
+        Если вам интересно подробно узнать о том, как можно применять знания своего профиля, то добро пожаловать
       </p>
       <a
         href="https://t.me/crazymethods"
@@ -175,7 +178,7 @@ export default function Results({ results, userName, onRestart }) {
           className="text-2xl font-bold"
           style={{ color: '#ff00ff', fontFamily: 'var(--font-mono)', fontStyle: 'italic' }}
         >
-          {userName}, твои результаты по итогу прохождения теста
+          {userName}, ваши результаты по итогу прохождения теста
         </h2>
       </div>
 
@@ -234,32 +237,8 @@ export default function Results({ results, userName, onRestart }) {
       {/* Personalized Formula */}
       <FormulaBlock formula={formula} />
 
-      {/* Telegram Channel Block */}
-      <TelegramChannelBlock />
-
-      {/* Footer - Actions */}
-      <div className="rounded-xl p-6 mb-8 text-center" style={{ backgroundColor: '#1a1a2e', border: '1px solid #333333' }}>
-        <p className="mb-2" style={{ color: '#888888' }}>
-          Чтобы сохранить результат, сделайте скриншот
-        </p>
-        <p className="mb-4" style={{ color: '#888888' }}>
-          Для запроса персональной интерпретации результатов пишите <strong style={{ color: '#ff00ff' }}>Алле Долгих</strong> в Telegram
-        </p>
-        <div className="flex justify-center">
-          <a
-            href="https://t.me/AllokDolgikh"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 text-white rounded-xl font-medium transition-all hover:brightness-110 hover:scale-105 flex items-center justify-center gap-2"
-            style={{ background: 'linear-gradient(to right, #ff00ff, #ff6b6b)' }}
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-            </svg>
-            Написать в Telegram
-          </a>
-        </div>
-      </div>
+      {/* Action Block */}
+      <ActionBlock />
 
       <div className="text-center mb-8">
         <button
