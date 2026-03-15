@@ -54,3 +54,81 @@ input, button, textarea, select {
   scrollbar-width: thin;
   scrollbar-color: #333333 #111111;
 }
+
+/* Formula styles */
+.formula-line {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 480px) {
+  .formula-line {
+    font-size: 13px;
+  }
+}
+
+.formula-system-label {
+  font-weight: 700;
+  font-size: inherit;
+}
+
+.formula-system-index {
+  font-size: 0.7em;
+  font-weight: 600;
+  vertical-align: super;
+  line-height: 0;
+  opacity: 0.85;
+}
+
+.formula-subscales {
+  font-size: inherit;
+  font-weight: 500;
+  opacity: 0.6;
+}
+
+.formula-subscript {
+  font-size: 0.75em;
+  vertical-align: sub;
+  line-height: 0;
+}
+
+.arrow-up,
+.arrow-down,
+.arrow-mid {
+  font-size: inherit;
+  font-weight: 600;
+  display: inline;
+  vertical-align: baseline;
+  margin-left: 1px;
+  opacity: 1 !important;
+}
+
+.arrow-up { color: #4ade80; }
+.arrow-down { color: #f87171; }
+.arrow-mid { color: #fbbf24; }
+
+.formula-dot {
+  color: rgba(255, 255, 255, 0.2);
+  font-weight: 300;
+  margin: 0 6px;
+}
+
+.formula-divider {
+  height: 1px;
+  margin: 12px 8%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+}

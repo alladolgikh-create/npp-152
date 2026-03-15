@@ -32,33 +32,39 @@ const arrowColors = {
   '→': '#fbbf24', // yellow - medium
 };
 
+// Get arrow CSS class
+function getArrowClass(arrow) {
+  if (arrow === '↑') return 'arrow-up';
+  if (arrow === '↓') return 'arrow-down';
+  return 'arrow-mid';
+}
+
 // Formula system renderer
 function FormulaSystem({ system }) {
   const { label, color, index, subscales } = system;
 
   return (
-    <span style={{ fontFamily: 'var(--font-mono)', display: 'inline-flex', alignItems: 'baseline' }}>
+    <span style={{ display: 'inline-flex', alignItems: 'baseline' }}>
       {/* System label - bright, 100% */}
-      <span style={{ color, fontWeight: 700 }}>{label}</span>
-      {/* Index as superscript - positioned correctly */}
-      <sup style={{ color, opacity: 0.8, fontSize: '0.6em', marginLeft: '1px' }}>
+      <span className="formula-system-label" style={{ color }}>{label}</span>
+      {/* Index as superscript */}
+      <span className="formula-system-index" style={{ color }}>
         {Math.round(index)}
-      </sup>
-      {/* Subscales in parentheses - letter + colored arrow */}
-      <span style={{ fontSize: '0.85em', fontWeight: 400, marginLeft: '2px' }}>
-        <span style={{ color: 'rgba(255,255,255,0.5)' }}>(</span>
+      </span>
+      {/* Subscales in parentheses - same size, muted via opacity */}
+      <span className="formula-subscales" style={{ color }}>
+        (
         {subscales.map((sub, i) => {
           const arrow = arrowMap[sub.direction] || sub.direction;
-          const arrowColor = arrowColors[arrow];
           return (
             <span key={i}>
-              {i > 0 && <span style={{ color: 'rgba(255,255,255,0.3)' }}> </span>}
-              <span style={{ color, opacity: 0.7 }}>{sub.label}</span>
-              <span style={{ color: arrowColor, fontWeight: 600 }}>{arrow}</span>
+              {i > 0 && ' '}
+              {sub.label}
+              <span className={getArrowClass(arrow)}>{arrow}</span>
             </span>
           );
         })}
-        <span style={{ color: 'rgba(255,255,255,0.5)' }}>)</span>
+        )
       </span>
     </span>
   );
@@ -89,32 +95,25 @@ function FormulaBlock({ formula }) {
         />
 
         {/* Formula content */}
-        <div className="text-center py-4" style={{ fontFamily: 'var(--font-mono)' }}>
+        <div className="text-center py-4">
           {/* Top row - leading systems */}
-          <div className="text-lg md:text-xl mb-4 flex justify-center items-center flex-wrap gap-x-2">
+          <div className="formula-line mb-4">
             {top.map((sys, i) => (
               <span key={sys.system}>
-                {i > 0 && <span style={{ color: 'rgba(255,255,255,0.3)', margin: '0 8px' }}>·</span>}
+                {i > 0 && <span className="formula-dot">·</span>}
                 <FormulaSystem system={sys} />
               </span>
             ))}
           </div>
 
-          {/* Divider line with gradient */}
-          <div
-            className="mx-auto mb-4"
-            style={{
-              height: '1px',
-              maxWidth: '90%',
-              background: 'linear-gradient(to right, transparent, #ff00ff, #39ff14, #00cec9, #ff6b6b, transparent)',
-            }}
-          />
+          {/* Divider line */}
+          <div className="formula-divider" />
 
           {/* Bottom row - other systems */}
-          <div className="text-lg md:text-xl flex justify-center items-center flex-wrap gap-x-2">
+          <div className="formula-line">
             {bottom.map((sys, i) => (
               <span key={sys.system}>
-                {i > 0 && <span style={{ color: 'rgba(255,255,255,0.3)', margin: '0 8px' }}>·</span>}
+                {i > 0 && <span className="formula-dot">·</span>}
                 <FormulaSystem system={sys} />
               </span>
             ))}
