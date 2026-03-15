@@ -1,14 +1,28 @@
 const scaleColors = {
-  serotonin: { accent: '#ff00ff', label: 'Серотонин' },
-  dopamine: { accent: '#39ff14', label: 'Дофамин' },
-  noradrenaline: { accent: '#00cec9', label: 'Норадреналин' },
-  gaba: { accent: '#ff6b6b', label: 'ГАМК' },
+  serotonin: { accent: '#ff00ff', label: 'Серотонин', labelEn: 'Serotonin' },
+  dopamine: { accent: '#39ff14', label: 'Дофамин', labelEn: 'Dopamine' },
+  noradrenaline: { accent: '#00cec9', label: 'Норадреналин', labelEn: 'Noradrenaline' },
+  gaba: { accent: '#ff6b6b', label: 'ГАМК', labelEn: 'GABA' },
+};
+
+// Map English labels to Russian
+const interpretationMap = {
+  'Low': 'Низкий',
+  'Medium': 'Средний',
+  'High': 'Высокий',
 };
 
 const interpretationBadges = {
   'Низкий': { bg: '#39ff1422', text: '#39ff14' },
   'Средний': { bg: '#ff00ff22', text: '#ff00ff' },
   'Высокий': { bg: '#ff6b6b22', text: '#ff6b6b' },
+};
+
+// Map ASCII arrows to Unicode
+const arrowMap = {
+  '^': '↑',
+  'v': '↓',
+  '-': '→',
 };
 
 // Arrow colors (independent of system colors)
@@ -39,13 +53,16 @@ function FormulaSystem({ system }) {
       {/* Subscales in parentheses */}
       <span style={{ color, opacity: 0.6, fontSize: '0.82em', fontWeight: 400 }}>
         (
-        {subscales.map((sub, i) => (
-          <span key={sub.label}>
-            {i > 0 && ' '}
-            <span>{sub.label}</span>
-            <span style={{ color: arrowColors[sub.direction] }}>{sub.direction}</span>
-          </span>
-        ))}
+        {subscales.map((sub, i) => {
+          const arrow = arrowMap[sub.direction] || sub.direction;
+          return (
+            <span key={sub.label}>
+              {i > 0 && ' '}
+              <span>{sub.label}</span>
+              <span style={{ color: arrowColors[arrow] }}>{arrow}</span>
+            </span>
+          );
+        })}
         )
       </span>
     </span>
@@ -189,7 +206,8 @@ export default function Results({ results, userName, onRestart }) {
         {Object.entries(scales).map(([key, scale]) => {
           const colors = scaleColors[key];
           const percentage = Math.round(scale.value * 100);
-          const badge = interpretationBadges[scale.interpretation.label] || interpretationBadges['Средний'];
+          const interpLabel = interpretationMap[scale.interpretation.label] || scale.interpretation.label;
+          const badge = interpretationBadges[interpLabel] || interpretationBadges['Средний'];
 
           return (
             <div
@@ -203,9 +221,9 @@ export default function Results({ results, userName, onRestart }) {
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h3 className="text-xl font-bold" style={{ color: colors.accent, fontFamily: 'var(--font-mono)' }}>
-                    {scale.name}
+                    {colors.label}
                   </h3>
-                  <p className="text-sm" style={{ color: '#555555' }}>{scale.nameEn}</p>
+                  <p className="text-sm" style={{ color: '#555555' }}>{colors.labelEn}</p>
                 </div>
                 <div className="text-right">
                   <span className="text-3xl font-bold" style={{ color: colors.accent, fontFamily: 'var(--font-mono)' }}>
@@ -228,7 +246,7 @@ export default function Results({ results, userName, onRestart }) {
                   className="inline-block px-3 py-1 rounded-full text-sm font-medium"
                   style={{ backgroundColor: badge.bg, color: badge.text }}
                 >
-                  {scale.interpretation.label}
+                  {interpLabel}
                 </span>
               </div>
             </div>
