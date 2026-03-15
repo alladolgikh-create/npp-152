@@ -164,6 +164,9 @@ function ActionBlock() {
 export default function Results({ results, userName, onRestart }) {
   const { scales, formula } = results;
 
+  // Debug: log formula structure
+  console.log('Formula data:', JSON.stringify(formula, null, 2));
+
   return (
     <div className="w-full max-w-4xl mx-auto">
       {/* Logo - Terminal-style header (identical to WelcomeScreen) */}
