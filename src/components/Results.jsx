@@ -149,8 +149,8 @@ export default function Results({ results, userName, onRestart }) {
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      {/* Logo - Terminal-style header */}
-      <div className="rounded-2xl p-6 mb-8" style={{ backgroundColor: '#1a1a2e', border: '1px solid #333333' }}>
+      {/* Logo - Terminal-style header (identical to WelcomeScreen) */}
+      <div className="rounded-2xl p-8 mb-8" style={{ backgroundColor: '#1a1a2e', border: '1px solid #333333' }}>
         <div style={{ fontFamily: 'var(--font-mono)' }} className="text-left text-sm mb-4">
           <p style={{ color: '#888888' }}>// нейрохимическое профилирование</p>
           <p>
@@ -165,7 +165,7 @@ export default function Results({ results, userName, onRestart }) {
         <h1 className="text-4xl font-bold mb-2 text-center" style={{ color: '#ff00ff', fontFamily: 'var(--font-mono)' }}>ВПРГМД-152</h1>
         <div style={{ fontFamily: 'var(--font-mono)' }} className="text-left text-sm mt-4">
           <p style={{ color: '#888888' }}>{'}'}</p>
-          <p style={{ color: '#555555' }}>// 152 вопроса {'>>'} ваш уникальный профиль</p>
+          <p style={{ color: '#555555' }}>// → 152 вопроса → ваш уникальный профиль</p>
         </div>
       </div>
 
