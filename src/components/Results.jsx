@@ -39,26 +39,26 @@ function FormulaSystem({ system }) {
   return (
     <span style={{ fontFamily: 'var(--font-mono)', display: 'inline-flex', alignItems: 'baseline' }}>
       {/* System label - bright, 100% */}
-      <span style={{ color, fontWeight: 700 }}>{label}</span>
-      {/* Index as superscript - positioned correctly */}
-      <sup style={{ color, opacity: 0.8, fontSize: '0.6em', marginLeft: '1px' }}>
+      <span style={{ color, fontWeight: 600 }}>{label}</span>
+      {/* Index as superscript */}
+      <sup style={{ color, opacity: 0.8, fontSize: '0.65em', marginLeft: '1px' }}>
         {Math.round(index)}
       </sup>
-      {/* Subscales in parentheses - letter + colored arrow */}
-      <span style={{ fontSize: '0.85em', fontWeight: 400, marginLeft: '2px' }}>
-        <span style={{ color: 'rgba(255,255,255,0.5)' }}>(</span>
+      {/* Subscales in parentheses - same size, muted color */}
+      <span style={{ fontWeight: 400, marginLeft: '2px' }}>
+        <span style={{ color: 'rgba(255,255,255,0.4)' }}>(</span>
         {subscales.map((sub, i) => {
           const arrow = arrowMap[sub.direction] || sub.direction;
           const arrowColor = arrowColors[arrow];
           return (
             <span key={i}>
-              {i > 0 && <span style={{ color: 'rgba(255,255,255,0.3)' }}> </span>}
-              <span style={{ color, opacity: 0.7 }}>{sub.label}</span>
-              <span style={{ color: arrowColor, fontWeight: 600 }}>{arrow}</span>
+              {i > 0 && <span style={{ color: 'rgba(255,255,255,0.25)' }}> </span>}
+              <span style={{ color, opacity: 0.6 }}>{sub.label}</span>
+              <span style={{ color: arrowColor }}>{arrow}</span>
             </span>
           );
         })}
-        <span style={{ color: 'rgba(255,255,255,0.5)' }}>)</span>
+        <span style={{ color: 'rgba(255,255,255,0.4)' }}>)</span>
       </span>
     </span>
   );
