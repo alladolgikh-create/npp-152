@@ -127,8 +127,8 @@ input, button, textarea, select {
 }
 
 .formula-divider {
-  height: 3px;
-  margin: 20px 10%;
+  height: 1px;
+  margin: 16px 10%;
   background: linear-gradient(
     90deg,
     transparent 0%,
@@ -137,8 +137,6 @@ input, button, textarea, select {
     transparent 100%
   );
   box-shadow:
-    0 0 8px #ff00ff,
-    0 0 15px rgba(255, 0, 255, 0.6),
-    0 0 25px rgba(57, 255, 20, 0.4);
-  border-radius: 2px;
+    0 0 6px rgba(255, 0, 255, 0.7),
+    0 0 12px rgba(57, 255, 20, 0.5);
 }
