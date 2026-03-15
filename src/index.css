@@ -63,29 +63,28 @@ input, button, textarea, select {
   gap: 6px;
   flex-wrap: wrap;
   font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 500;
   line-height: 1.8;
   letter-spacing: 0.02em;
 }
 
 @media (max-width: 480px) {
   .formula-line {
-    font-size: 13px;
+    font-size: 16px;
   }
 }
 
 .formula-system-label {
-  font-weight: 700;
+  font-weight: 600;
   font-size: inherit;
 }
 
 .formula-system-index {
-  font-size: 0.7em;
-  font-weight: 600;
+  font-size: 0.65em;
+  font-weight: 500;
   vertical-align: super;
   line-height: 0;
-  opacity: 0.85;
 }
 
 .formula-subscales {
@@ -100,11 +99,13 @@ input, button, textarea, select {
   line-height: 0;
 }
 
+/* Arrows with serif font for elegant look */
 .arrow-up,
 .arrow-down,
 .arrow-mid {
-  font-size: inherit;
-  font-weight: 600;
+  font-family: 'Times New Roman', Georgia, serif;
+  font-size: 1.1em;
+  font-weight: 400;
   display: inline;
   vertical-align: baseline;
   margin-left: 1px;
