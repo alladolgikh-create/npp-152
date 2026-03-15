@@ -18,24 +18,24 @@ const interpretationBadges = {
   'Высокий': { bg: '#ff6b6b22', text: '#ff6b6b' },
 };
 
-// Map ASCII arrows to Unicode
+// Map ASCII arrows to Unicode (curved style)
 const arrowMap = {
-  '^': '↑',
-  'v': '↓',
+  '^': '↗',
+  'v': '↘',
   '-': '→',
 };
 
 // Arrow colors (independent of system colors)
 const arrowColors = {
-  '↑': '#4ade80', // green - high
-  '↓': '#f87171', // red - low
+  '↗': '#4ade80', // green - high
+  '↘': '#f87171', // red - low
   '→': '#fbbf24', // yellow - medium
 };
 
 // Get arrow CSS class
 function getArrowClass(arrow) {
-  if (arrow === '↑') return 'arrow-up';
-  if (arrow === '↓') return 'arrow-down';
+  if (arrow === '↗') return 'arrow-up';
+  if (arrow === '↘') return 'arrow-down';
   return 'arrow-mid';
 }
 
