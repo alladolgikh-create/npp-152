@@ -36,30 +36,23 @@ const arrowColors = {
 function FormulaSystem({ system }) {
   const { label, color, index, subscales } = system;
 
-  // Convert number to superscript
-  const toSuperscript = (num) => {
-    const map = { '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹' };
-    return String(Math.round(num)).split('').map(ch => map[ch] || ch).join('');
-  };
-
   return (
-    <span style={{ fontFamily: 'var(--font-mono)' }}>
+    <span style={{ fontFamily: 'var(--font-mono)', display: 'inline-flex', alignItems: 'baseline' }}>
       {/* System label - bright, 100% */}
       <span style={{ color, fontWeight: 700 }}>{label}</span>
-      {/* Index as superscript - 80% opacity */}
-      <span style={{ color, opacity: 0.8, verticalAlign: 'super', fontSize: '0.65em' }}>
-        {toSuperscript(index)}
-      </span>
-      {/* Subscales in parentheses */}
-      <span style={{ color, opacity: 0.6, fontSize: '0.82em', fontWeight: 400 }}>
+      {/* Index as superscript - positioned correctly */}
+      <sup style={{ color, opacity: 0.8, fontSize: '0.6em', marginLeft: '1px' }}>
+        {Math.round(index)}
+      </sup>
+      {/* Subscales in parentheses - only arrows, no icons */}
+      <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.85em', fontWeight: 400, marginLeft: '2px' }}>
         (
         {subscales.map((sub, i) => {
           const arrow = arrowMap[sub.direction] || sub.direction;
+          const arrowColor = arrowColors[arrow];
           return (
-            <span key={sub.label}>
-              {i > 0 && ' '}
-              <span>{sub.label}</span>
-              <span style={{ color: arrowColors[arrow] }}>{arrow}</span>
+            <span key={i} style={{ color: arrowColor, fontWeight: 600 }}>
+              {arrow}
             </span>
           );
         })}
@@ -141,7 +134,7 @@ function ActionBlock() {
         Чтобы сохранить результат, сделайте скриншот
       </p>
       <p className="mb-6 text-center" style={{ color: '#888888', fontSize: '17px', lineHeight: 1.7 }}>
-        Если вам интересно подробно узнать о том, как можно применять знания своего профиля, то добро пожаловать
+        Если вам интересно подробней узнать о том, к каким сферам и как именно можно применять знания своего профиля, то добро пожаловать
       </p>
       <div className="flex justify-center">
         <a
