@@ -194,8 +194,8 @@ export default function Results({ results, userName, onRestart }) {
       {/* Header - name and results title */}
       <div className="text-center mb-8">
         <h2
-          className="text-2xl font-bold"
-          style={{ color: '#ff00ff', fontFamily: 'var(--font-mono)', fontStyle: 'italic' }}
+          className="text-2xl font-medium"
+          style={{ color: '#ff00ff', fontFamily: 'var(--font-mono)' }}
         >
           {userName}, ваши результаты по итогу прохождения теста
         </h2>
