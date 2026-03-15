@@ -117,13 +117,13 @@ function FormulaBlock({ formula }) {
 function ActionBlock() {
   return (
     <div
-      className="rounded-xl p-6 mb-8"
+      className="rounded-xl p-6 mb-8 text-center"
       style={{ backgroundColor: '#1a1a2e', border: '1px solid #333333' }}
     >
-      <p className="mb-4" style={{ color: '#888888', fontSize: '13px', lineHeight: 1.7 }}>
+      <p className="mb-4" style={{ color: '#888888', fontSize: '15px', lineHeight: 1.7 }}>
         Чтобы сохранить результат, сделайте скриншот
       </p>
-      <p className="mb-4" style={{ color: '#888888', fontSize: '13px', lineHeight: 1.7 }}>
+      <p className="mb-4" style={{ color: '#888888', fontSize: '15px', lineHeight: 1.7 }}>
         Если вам интересно подробно узнать о том, как можно применять знания своего профиля, то добро пожаловать
       </p>
       <a
