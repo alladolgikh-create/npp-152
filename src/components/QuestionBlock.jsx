@@ -97,11 +97,6 @@ export default function QuestionBlock({
       <div className="rounded-xl p-6 mb-6" style={{ backgroundColor: '#1a1a2e', border: `1px solid ${colors.accent}44` }}>
         <h2 className="text-2xl font-bold mb-2" style={{ color: colors.accent, fontFamily: 'var(--font-mono)' }}>{block.title}</h2>
         <p style={{ color: '#888888' }}>{block.instruction}</p>
-        {block.responseScale.note && (
-          <p className="mt-3 text-sm rounded-lg p-3" style={{ backgroundColor: colors.dark, color: '#e0e0e0' }}>
-            {block.responseScale.note}
-          </p>
-        )}
       </div>
 
       <div className="mb-4 text-sm text-center" style={{ color: colors.accent, fontFamily: 'var(--font-mono)' }}>
