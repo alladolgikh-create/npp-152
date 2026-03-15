@@ -44,13 +44,13 @@ function FormulaSystem({ system }) {
   const { label, color, index, subscales } = system;
 
   return (
-    <span style={{ display: 'inline-flex', alignItems: 'baseline' }}>
+    <span className="formula-system">
       {/* System label - bright, 100% */}
       <span className="formula-system-label" style={{ color }}>{label}</span>
       {/* Index as superscript */}
-      <span className="formula-system-index" style={{ color }}>
+      <sup className="formula-system-index" style={{ color }}>
         {Math.round(index)}
-      </span>
+      </sup>
       {/* Subscales in parentheses - same size, muted via opacity */}
       <span className="formula-subscales" style={{ color }}>
         (

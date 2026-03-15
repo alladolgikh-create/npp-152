@@ -75,16 +75,21 @@ input, button, textarea, select {
   }
 }
 
+.formula-system {
+  display: inline;
+  white-space: nowrap;
+}
+
 .formula-system-label {
   font-weight: 600;
   font-size: inherit;
 }
 
 .formula-system-index {
-  font-size: 0.65em;
+  font-size: 0.6em;
   font-weight: 500;
   vertical-align: super;
-  line-height: 0;
+  margin-left: 1px;
 }
 
 .formula-subscales {
@@ -103,12 +108,11 @@ input, button, textarea, select {
 .arrow-up,
 .arrow-down,
 .arrow-mid {
-  font-family: 'Times New Roman', Georgia, serif;
-  font-size: 1.1em;
+  font-family: 'Times New Roman', Georgia, serif !important;
+  font-size: 1.15em;
   font-weight: 400;
   display: inline;
-  vertical-align: baseline;
-  margin-left: 1px;
+  margin-left: 2px;
   opacity: 1 !important;
 }
 
