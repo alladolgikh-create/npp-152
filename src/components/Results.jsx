@@ -1,6 +1,6 @@
 const scaleColors = {
   serotonin: { accent: '#ff00ff', label: 'Серотонин', labelEn: 'Serotonin' },
-  dopamine: { accent: '#39ff14', label: 'Дофамин', labelEn: 'Dopamine' },
+  dopamine: { accent: '#f97316', label: 'Дофамин', labelEn: 'Dopamine' },
   noradrenaline: { accent: '#00cec9', label: 'Норадреналин', labelEn: 'Noradrenaline' },
   gaba: { accent: '#ff6b6b', label: 'ГАМК', labelEn: 'GABA' },
 };
