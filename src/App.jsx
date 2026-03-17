@@ -60,12 +60,14 @@ function App() {
         });
 
         const data = await response.json();
+        console.log('API response:', data);
 
         if (data.success) {
           setResults(data.results);
           setAppState(STATES.RESULTS);
         } else {
-          alert('Ошибка при обработке результатов. Попробуйте еще раз.');
+          console.error('API error response:', data);
+          alert(`Ошибка при обработке результатов: ${data.error || 'неизвестная ошибка'}. Попробуйте еще раз.`);
           setAppState(STATES.QUESTIONNAIRE);
         }
       } catch (error) {
