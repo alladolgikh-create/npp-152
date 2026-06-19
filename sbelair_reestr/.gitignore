@@ -1,0 +1,9 @@
+# Результаты сбора и секреты — в репозиторий не кладём
+output/
+cookies.txt
+*.jsonl
+*.mp4
+frames/
+
+__pycache__/
+*.pyc

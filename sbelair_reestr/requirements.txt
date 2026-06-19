@@ -1,0 +1,5 @@
+# Внешние CLI-инструменты сбора. Обновлять перед каждым запуском:
+#   pip install -U yt-dlp gallery-dl
+# Сам collect.py использует только стандартную библиотеку Python 3.8+.
+yt-dlp
+gallery-dl
